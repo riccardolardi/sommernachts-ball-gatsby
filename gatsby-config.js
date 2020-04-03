@@ -33,7 +33,7 @@ module.exports = {
 		{
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: process.env.WP_BASE_URL,
+        baseUrl: process.env.WP_BASE_URL || '2020.sommernachts-ball.ch',
         useACF: true,
         verboseOutput: false,
         protocol: `http`,
