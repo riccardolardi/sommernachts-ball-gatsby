@@ -27,21 +27,18 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
       },
     },
-		{
-      resolve: `gatsby-source-wordpress`,
+    {
+      resolve: `gatsby-source-graphql`,
       options: {
-        baseUrl: process.env.WP_BASE_URL || '2020.sommernachts-ball.ch',
-        useACF: true,
-        verboseOutput: false,
-        protocol: `http`,
-        hostingWPCOM: false
-      }
-    }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+        typeName: `WPGraphQL`,
+        fieldName: `wpgraphql`,
+        url: `${process.env.WP_BASE_URL || '2020.sommernachts-ball.ch'}/graphql`
+      },
+    },
+    // https://gatsby.dev/offline
+    `gatsby-plugin-offline`,
   ],
 }
