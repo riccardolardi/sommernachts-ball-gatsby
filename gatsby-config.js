@@ -35,7 +35,7 @@ module.exports = {
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `${process.env.WP_BASE_URL || '2020.sommernachts-ball.ch'}/graphql`
+        url: `${process.env.WP_BASE_URL || 'http://2020.sommernachts-ball.ch'}/graphql`
       },
     },
     // https://gatsby.dev/offline
