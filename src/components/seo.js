@@ -1,39 +1,37 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import ogImage from "../images/og.jpg"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { wpgraphql, site } = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
+        wpgraphql {
+          generalSettings {
             title
             description
-            author
+          }
+        }
+        site {
+          siteMetadata {
+            url
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = wpgraphql.generalSettings.description
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={`${wpgraphql.generalSettings.title}`}
+      titleTemplate={`%s ${title ? '| ' + title : ''}`}
       meta={[
         {
           name: `description`,
@@ -44,6 +42,10 @@ function SEO({ description, lang, meta, title }) {
           content: title,
         },
         {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
@@ -52,12 +54,16 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:url`,
+          content: site.siteMetadata.url,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `Genossenschaft Migros Zürich`,
         },
         {
           name: `twitter:title`,
@@ -73,7 +79,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `de`,
   meta: [],
   description: ``,
 }

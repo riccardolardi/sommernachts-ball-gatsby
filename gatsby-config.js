@@ -3,9 +3,9 @@ require("dotenv").config({
 });
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Sommernachts-Ball`,
+    url: `http://www.sommernachts-ball.ch`,
+    author: `@riccardolardi`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,10 +24,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/favicon.png`,
       },
     },
     {
@@ -38,7 +38,6 @@ module.exports = {
         url: `${process.env.WP_BASE_URL || 'http://2020.sommernachts-ball.ch'}/graphql`
       },
     },
-    // https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],
 }
