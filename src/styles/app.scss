@@ -1,0 +1,123 @@
+@import 'breakpoint-sass';
+@import 'vars.scss';
+
+#app {
+	color: white;
+	background-color: black;
+	min-height: 100vh;
+
+	&.inverted {
+		background-color: white;
+		color: black;
+
+		.isolate {
+			color: black;
+		}
+	}
+
+  h1 {
+  	font-size: $pad * 2;
+  	line-height: $pad * 2;
+  }
+
+  a {
+  	color: inherit;
+  	text-decoration: none;
+  }
+
+	.blend {
+		mix-blend-mode: difference;
+	}
+
+	.isolate {
+		isolation: isolate;
+	}
+
+	.icon {
+		position: relative;
+		font-size: $pad;
+		left: -0.4vmax;
+
+		@include breakpoint($breakMobile) {
+			font-size: $pad * 2;
+			left: -0.8vmax;
+		}
+	}
+
+	.suffix-slash {
+
+		&:after {
+			display: inline-block;
+			font-weight: bold;
+			content: "/";
+		}
+	}
+
+	.text-logo {
+		display: inline-block;
+		pointer-events: none;
+
+		&.front {
+			position: absolute;
+			top: 4vmin;
+			left: 4vmin;
+
+			@include breakpoint($breakMobile) {
+		  	font-size: 5.6vmax;
+		  	line-height: 7.2vmax;
+		  	left: 6vmin;
+				opacity: 0;
+				transition: opacity 0ms 0ms;
+			}
+		}
+
+		&.show {
+			opacity: 1;
+			transition: opacity 250ms 0ms;
+		}
+
+		&.hide {
+			opacity: 0;
+			transition: opacity 250ms 0ms;
+
+			@include breakpoint($breakMobile) {
+				opacity: 0;
+		  	font-size: 5.6vmax;
+		  	line-height: 7.2vmax;
+		  	transition: opacity 0ms 0ms;
+			}
+		}
+
+		.row {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	.migros-logo {
+		display: block;
+		position: absolute;
+		top: 4vmin;
+		right: 6vmin;
+		width: 30vmin;
+		pointer-events: none;
+  	transition: opacity 250ms;
+  	z-index: 5;
+
+  	@include breakpoint($breakMobile) {
+  		top: 4vh;
+
+  		&.hide {
+  			transition: opacity 0ms;
+  		}
+  	}
+
+		&.show {
+  		opacity: 1;
+		}
+
+		&.hide {
+			opacity: 0;
+		}
+	}
+}

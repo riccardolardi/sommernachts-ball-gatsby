@@ -1,0 +1,17 @@
+// type
+@font-face {
+	font-family: 'Moneta';
+	src: url('../assets/Santi Rey - Moneta Regular.otf');
+}
+
+// sizes
+$pad: 3.8vmax;
+
+// breakpoints
+$breakMobile: 0 767px;
+$breakTablet: 768px 1024px;
+$breakSmall: 1025px 1280px;
+$breakMedium: 1281px 1440px;
+$breakLarge: 1441px 1920px;
+$breakHuge: 1921px 2560px;
+$breakMassive: 2561px;

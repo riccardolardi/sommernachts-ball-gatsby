@@ -1,26 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import "./layout.scss"
+import "../styles/layout.scss"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      wpgraphql {
-        generalSettings {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <main>{children}</main>
-  )
+  return (<div id="layout">{children}</div>)
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Layout
