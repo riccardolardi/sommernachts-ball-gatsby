@@ -2,9 +2,11 @@
 @import 'vars.scss';
 
 #app {
+	position: relative;
 	color: white;
 	background-color: black;
-	min-height: 100vh;
+	perspective: 2px;
+	overflow: hidden;
 
 	&.inverted {
 		background-color: white;
@@ -23,6 +25,11 @@
   a {
   	color: inherit;
   	text-decoration: none;
+  }
+
+  .link {
+  	text-decoration: underline;
+  	cursor: pointer;
   }
 
 	.blend {

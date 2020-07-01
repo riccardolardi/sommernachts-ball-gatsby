@@ -1,3 +1,475 @@
+@import 'breakpoint-sass';
+@import 'mixins.scss';
+@import 'vars.scss';
+
 main#main {
-	
+	position: relative;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 0 4vw 0 28vw;
+
+	@include breakpoint($breakMobile) {
+		padding: 0 6vw;
+	}
+
+	&.hide {
+		pointer-events: none;
+
+		article.active {
+			opacity: 0;
+		}
+	}
+
+	&.scroll-lock {
+		overflow-y: hidden;
+	}
+
+	article {
+		position: relative;
+		min-height: 100vh;
+		hyphens: auto;
+		opacity: 0;
+		pointer-events: none;
+		padding-top: calc(#{$pad * 4} + 4vmin);
+
+		&.active {
+			opacity: 1;
+			pointer-events: auto;
+
+			&.intro {
+				transition: opacity 250ms 125ms;
+			}
+		}
+
+		&.intro {
+			padding-top: 0;
+		}
+
+		&[data-wp="1"] {
+			
+		}
+
+		&[data-wp="2"] {
+
+		}
+
+		&[data-wp="3"] {
+			
+		}
+
+		&[data-wp="4"] {
+			
+		}
+
+		&[data-wp="5"] {
+			
+		}
+
+		&[data-wp="6"] {
+			
+		}
+
+		&[data-wp="7"] {
+			
+		}
+
+		&[data-wp="8"] {
+			
+		}
+
+		&[data-wp="9"] {
+			
+		}
+
+		.centerWrap {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			bottom: 0px;
+			left: 0px;
+			pointer-events: none;
+		}
+
+		.migros-logo {
+			position: static;
+			width: 60vmin;
+		}
+
+		.partner {
+			display: inline-block;
+			margin-right: 2vmax;
+
+			@include breakpoint($breakMobile) {
+				display: block;
+				margin-top: $pad / 2;
+			}
+
+			img {
+				display: block;
+				height: 2vmax;
+
+				@include breakpoint($breakMobile) {
+					height: 4vmax;
+				}
+			}
+		}
+
+		.artist-info {
+			margin-bottom: $pad / 2;
+
+			h2.link {
+				display: inline-block;
+			}
+
+			.details {
+				max-height: 0px;
+				opacity: 0;
+				transition: opacity 250ms 0ms, max-height 250ms 0ms;
+				overflow: hidden;
+				@include clearfix();
+
+				&.open {
+					max-height: 1000vh;
+					opacity: 1;
+					transition: opacity 250ms 0ms, max-height 0ms 0ms;
+				}
+
+				&:after {
+					content: "\00a0\00a0\00a0\00a0\00a0";
+					height: $pad * 1.4;
+					tx-decoration: underline;
+				}
+
+				.artist-text {
+					padding: $pad / 2 0 0;
+
+					p + p {
+						margin-top: $pad / 3;
+					}
+
+					.icon {
+						margin-top: $pad / 3;
+					}
+				}
+
+				.artist-photo {
+					float: right;
+					padding: $pad / 2 0 0 $pad / 2;
+					margin: 1vmax 0 $pad / 2;
+					width: 33%;
+					max-width: 100%;
+
+					@include breakpoint($breakMobile) {
+						float: none;
+						width: auto;
+						margin-bottom: 0;
+						padding: $pad / 2 0 0;
+					}
+				}
+			}
+		}
+
+		.video {
+			position: relative;
+			padding: 56.25% 0 0;
+
+			iframe {
+				display: block;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.gallery-photos {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: $pad;
+
+			@include breakpoint($breakMobile) {
+				display: block;
+			}
+		}
+
+		.gallery-photo {
+			display: block;
+			margin-top: $pad / 2;
+			width: 50%;
+			height: 100%;
+
+			&:nth-child(even) {
+				padding-left: $pad / 4;
+			}
+
+			&:nth-child(odd) {
+				padding-right: $pad / 4;
+			}
+
+			&:nth-child(1), &:nth-child(2) {
+				margin-top: 0;
+			}
+
+			@include breakpoint($breakMobile) {
+				width: 100%;
+				margin: $pad 0 0 !important;
+				padding: 0 !important;
+			}
+		}
+
+		.newsletter-form {
+
+			input {
+				display: block;
+				border: 0.2vmax solid white;
+				border-radius: 0px;
+				background-color: transparent;
+				color: white;
+				font-family: 'Moneta';
+				font-size: $pad;
+				letter-spacing: 0.02em;
+				padding: 0.4vmax;
+				max-width: 100%;
+
+				&::placeholder {
+				  color: white;
+				  opacity: 1;
+				}
+			}
+
+			button {
+				display: block;
+				border: 0.2vmax solid white;
+				border-radius: 0px;
+				background-color: white;
+				color: black;
+				font-family: 'Moneta';
+				font-size: $pad;
+				line-height: $pad;
+				letter-spacing: 0.02em;
+				padding: 0.8vmax 0.4vmax;
+				margin-top: $pad / 2;
+				max-width: 100%;
+			}
+
+			&.inverted {
+
+				input {
+					border: 0.2vmax solid black;
+					color: black;
+
+					&::placeholder {
+					  color: black;
+					  opacity: 1;
+					}
+				}
+
+				button {
+					border: 0.2vmax solid black;
+					background-color: black;
+					color: white;
+				}
+			}
+		}
+	}
+
+	.image {
+		display: inline-block;
+
+		img {
+			display: block;
+		}
+	}
+
+	.scroll-indicator {
+		display: block;
+		position: fixed;
+		bottom: 4.6vh;
+		left: 50%;
+		width: $pad * 1.4;
+		height: $pad * 1.4;
+		border-radius: $pad * 0.7;
+		margin-left: -$pad * 0.7;
+		transition: transform 250ms, opacity 250ms;
+		cursor: pointer;
+
+		@include breakpoint($breakMobile) {
+			width: $pad * 2.4;
+			height: $pad * 2.4;
+			border-radius: $pad * 1.2;
+			margin-left: -$pad * 1.2;
+		}
+
+		&.show {
+			pointer-events: auto;
+			transition: transform 250ms 250ms, opacity 250ms 250ms;
+			transform: translateY(0px);
+			opacity: 1;
+		}
+
+		&.hide {
+			pointer-events: none;
+			transition: transform 250ms 0ms, opacity 250ms 0ms;
+			transform: translateY(10vh);
+			opacity: 0;
+		}
+
+		&.mobile-nav-open {
+			background-color: white !important;
+			z-index: 100;
+
+			svg {
+				opacity: 0;
+			}
+
+			.scroll-indicator-content.menu {
+				visibility: hidden;
+				transform: rotateY(90deg);
+				transition: transform 125ms 0ms, visibility 125ms 0ms;
+			}
+			
+			.scroll-indicator-content.close {
+				visibility: visible;
+				transform: rotateY(0deg);
+				transition: transform 125ms 125ms, visibility 125ms 125ms;
+			}
+		}
+
+		&.is-scroll {
+
+			@include breakpoint($breakMobile) {
+
+				.scroll-indicator-content.scroll {
+					visibility: visible;
+					transform: rotateY(0deg);
+					transition: transform 125ms 125ms, visibility 125ms 125ms;
+				}
+
+				.scroll-indicator-content.menu,
+				.scroll-indicator-content.close {
+					visibility: hidden;
+					transform: rotateY(90deg);
+					transition: transform 125ms 0ms, visibility 125ms 0ms;
+				}
+			}
+		}
+
+		&.is-menu {
+
+			@include breakpoint($breakMobile) {
+				background-color: black;
+
+				&.inverted {
+					background-color: white;
+
+					svg path.CircularProgressbar-path {
+						stroke: black !important;
+					}
+				}
+
+				svg path.CircularProgressbar-path {
+					stroke: white !important;
+				}
+			}
+		}
+
+		& > div {
+			height: 100%;
+
+			div {
+				margin-top: 0px !important;
+			}
+		}
+
+		svg {
+			position: absolute;
+			top: 0px;
+			transform-origin: center;
+			transform: scale(1.04);
+			overflow: visible;
+
+			@include breakpoint($breakMobile) {
+				transition: opacity 250ms;
+			}
+		}
+
+		.scroll-indicator-content {
+			display: block;
+			position: absolute;
+			visibility: visible;
+			transition: transform 250ms 0ms, visibility 250ms 0ms;
+
+			&.scroll {
+				width: 75%;
+				height: 75%;
+				transition: transform 125ms 0ms, visibility 125ms 0ms;
+
+				@include breakpoint($breakMobile) {
+					visibility: hidden;
+					transform: rotateY(90deg);
+				}
+			}
+
+			&.menu {
+				visibility: hidden;
+				width: 40%;
+				height: 40%;
+				transition: transform 125ms 125ms, visibility 125ms 125ms;
+
+				@include breakpoint($breakMobile) {
+					visibility: visible;
+					transform: rotateY(0deg);
+				}
+			}
+
+			&.close {
+				visibility: hidden;
+				width: 30%;
+				height: 30%;
+				transform: rotateY(90deg);
+				transition: transform 125ms 0ms, visibility 125ms 0ms;
+			}
+		}
+	}
+
+	.scroll-timer {
+		position: fixed;
+		top: 4.6vh;
+		right: 4.6vh;
+		transition: transform 250ms, opacity 250ms;
+
+		&.show {
+			opacity: 1;
+			transform: translateX(0px);
+		}
+
+		&.hide {
+			opacity: 0;
+			transform: translateX(10vh);
+		}
+
+		&:after {
+			display: block;
+			width: 8vh;
+			height: 8vh;
+			border-radius: 4vh;
+			content: "";
+			background: white;
+			animation: pulse 250ms infinite alternate linear;
+		}
+	}
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(90deg);
+  }
 }

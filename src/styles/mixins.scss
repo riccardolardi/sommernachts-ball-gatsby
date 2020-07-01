@@ -1,0 +1,81 @@
+@import 'breakpoint-sass';
+
+@mixin circle($size) {
+	@include breakpoint($breakMobile) {
+		$size: $size * 0.85;
+	}
+	width: $size + vmax;
+	height: $size + vmax;
+	border-radius: $size / 2 + vmax;
+}
+
+@mixin clearfix {
+	&::after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+@mixin siblings-by-count($sibling-count, $sibling) {
+	#{$sibling}:first-of-type:nth-last-of-type(#{$sibling-count}),
+	#{$sibling}:first-of-type:nth-last-of-type(#{$sibling-count}) ~ #{$sibling} {
+		@content;
+	}
+}
+
+@function pi() {
+	@return 3.14159265359;
+}
+
+@function pow($number, $exp) {
+	$value: 1;
+	@if $exp > 0 {
+		@for $i from 1 through $exp {
+			$value: $value * $number;
+		}
+	}
+	@else if $exp < 0 {
+		@for $i from 1 through -$exp {
+			$value: $value / $number;
+		}
+	}
+	@return $value;
+}
+
+@function fact($number) {
+	$value: 1;
+	@if $number > 0 {
+		@for $i from 1 through $number {
+			$value: $value * $i;
+		}
+	}
+	@return $value;
+}
+
+@function rad($angle) {
+	$unit: unit($angle);
+	$unitless: $angle / ($angle * 0 + 1);
+	@if $unit == deg {
+		$unitless: $unitless / 180 * pi();
+	}
+	@return $unitless;
+}
+
+@function sin($angle) {
+	$sin: 0;
+	$angle: rad($angle);
+	@for $i from 0 through 10 {
+		$sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+	}
+	@return $sin;
+}
+
+@function cos($angle) {
+	$cos: 0;
+	$angle: rad($angle);
+	@for $i from 0 through 10 {
+		$cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+	}
+	@return $cos;
+}

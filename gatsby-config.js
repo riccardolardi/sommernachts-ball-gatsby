@@ -8,6 +8,7 @@ module.exports = {
     author: `@riccardolardi`,
   },
   plugins: [
+    `@bumped-inc/gatsby-plugin-optional-chaining`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {

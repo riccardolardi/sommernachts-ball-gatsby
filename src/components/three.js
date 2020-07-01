@@ -4,9 +4,9 @@ import { Canvas, useThree, useFrame } from "react-three-fiber"
 import Ball from "./ball"
 import "../styles/three.scss"
 
-const pixelRatio = window.devicePixelRatio
-const winW = window.innerWidth
-const winH = window.innerHeight
+const pixelRatio = typeof window !== 'undefined' ? window.devicePixelRatio : 0
+const winW = typeof window !== 'undefined' ? window.innerWidth : 0
+const winH = typeof window !== 'undefined' ? window.innerHeight : 0
 let skipFrame = false
 
 const Three = React.memo(function Three(props) {

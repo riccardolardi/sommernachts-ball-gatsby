@@ -1,0 +1,97 @@
+@import 'breakpoint-sass';
+@import 'vars.scss';
+
+nav#navi {
+	position: absolute;
+	bottom: 4vmin;
+	left: 4vmin;
+	transform: translateX(0px);
+	transition: opacity 250ms 0ms;
+
+	&.show {
+		opacity: 1;
+	}
+
+	&.hide {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	span {
+		display: block;
+
+		a {
+			display: inline-block;
+
+			&.link {
+				text-decoration: none;
+			}
+
+			&.active {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	@include breakpoint($breakMobile) {
+		display: flex;
+		position: fixed;
+		top: 0px;
+		left: 6vmin;
+		bottom: 0px;
+		right: 0px;
+		padding: 6vmax 0 0 0;
+  	font-size: 5.6vmax;
+  	line-height: 7.2vmax;
+  	flex-direction: column;
+  	justify-content: center;
+
+  	&.hide {
+			opacity: 0;
+			transition: opacity 0ms 0ms;
+			pointer-events: none;
+  	}
+
+  	&.show {
+
+  		span {
+  			transform: translateX(0px);
+  			opacity: 1;
+
+	  		&:nth-child(2n) {
+		  		transform: translateX(0px);
+		  		opacity: 1;
+	  		}
+
+	  		&:nth-child(1) {
+	  			transition: all 250ms 125ms;
+	  		}
+
+	  		&:nth-child(2) {
+	  			transition: all 250ms 250ms;
+	  		}
+
+	  		&:nth-child(3) {
+	  			transition: all 250ms 375ms;
+	  		}
+
+	  		&:nth-child(4) {
+	  			transition: all 250ms 500ms;
+	  		}
+
+	  		&:nth-child(5) {
+	  			transition: all 250ms 625ms;
+	  		}
+
+	  		&:nth-child(6) {
+	  			transition: all 250ms 750ms;
+	  		}
+  		}
+  	}
+
+  	span {
+  		transform: translateX(10vw);
+  		opacity: 0;
+  	}
+	}
+}
