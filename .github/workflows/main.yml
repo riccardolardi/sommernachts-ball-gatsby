@@ -2,25 +2,28 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ prod ]
+  repository_dispatch:
+    types: dispatch
 
 jobs:
   build:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout prod
       uses: actions/checkout@v2
       with:
+        ref: prod
         persist-credentials: false
-    - name: Build Gatsby
+    - name: Build gatsby
       uses: jzweifel/gatsby-cli-github-action@master
       with:
         gatsby-arg: build
-    - name: FTP Deploy
+    - name: FTP deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: s080.cyon.net/public_html/dev
+        ftp-server: s080.cyon.net/public_html/2020-gatsby
         ftp-username: sommern2
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: public
