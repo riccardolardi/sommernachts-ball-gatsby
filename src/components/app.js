@@ -107,7 +107,8 @@ const App = (props) => {
 	    	setMobileNavOpen={setMobileNavOpen} 
 	    	onExtraWheel={onExtraWheel}
 	    />
-	    <Navi
+	    <Navi 
+	    	data={props.data} 
 				wp={wp} 
 				jumpTo={jumpTo} 
 				isIntro={isIntro} 

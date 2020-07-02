@@ -29,17 +29,17 @@ const closeSrc = require('../assets/close.svg')
 const Main = (props) => {
 
 	const newsData = 
-		props.data.wpgraphql.news.nodes.find(el => el.acfNews.online).acfNews
+		props.data.wpgraphql.news.nodes.find(el => el.acfNews.online)?.acfNews
 	const infoData = 
-		props.data.wpgraphql.infos.nodes.find(el => el.acfInfo.online).acfInfo
+		props.data.wpgraphql.infos.nodes.find(el => el.acfInfo.online)?.acfInfo
 	const lineupData = 
-		props.data.wpgraphql.lineups.nodes.find(el => el.acfLineup.online).acfLineup
+		props.data.wpgraphql.lineups.nodes.find(el => el.acfLineup.online)?.acfLineup
 	const galleryData = 
-		props.data.wpgraphql.galleries.nodes.find(el => el.acfGallery.online).acfGallery
+		props.data.wpgraphql.galleries.nodes.find(el => el.acfGallery.online)?.acfGallery
 	const newsletterData = 
-		props.data.wpgraphql.newsletters.nodes.find(el => el.acfNewsletter.online).acfNewsletter
+		props.data.wpgraphql.newsletters.nodes.find(el => el.acfNewsletter.online)?.acfNewsletter
 	const contactData = 
-		props.data.wpgraphql.contacts.nodes.find(el => el.acfContact.online).acfContact
+		props.data.wpgraphql.contacts.nodes.find(el => el.acfContact.online)?.acfContact
 
 	const winWidth = typeof window !== 'undefined' ? window.innerWidth : 0
 	const winHeight = typeof window !== 'undefined' ? window.innerHeight : 0
@@ -80,9 +80,11 @@ const Main = (props) => {
 	}, [props.wp])
 
 	React.useLayoutEffect(() => {
+		if (!articleRef.current.length) return
 		const scrollTop = scrollPosition.y
 		for (let i = 0; i < articleRef.current.length; i++) {
 			const article = articleRef.current[i]
+			if (!article) continue;
 			const articleTop = article.offsetTop
 			const articleHeight = article.offsetHeight
 			const articleWp = parseInt(articleRef.current[i].dataset.wp)
@@ -152,7 +154,7 @@ const Main = (props) => {
 
   return (
   	<main id="main" className={classes} ref={scrollRef} onWheel={onWheel}>
-			<article data-wp="1" ref={el => articleRef.current[0] = el} 
+			<article data-wp="1" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 1 ? 'active' : 'inactive'} intro`}>
 				<div className="centerWrap">
 			    <div className="text-logo" style={props.wp === 1 ? logo1style : null}>
@@ -171,7 +173,7 @@ const Main = (props) => {
 			    </div>
 			  </div>
 			</article>
-			<article data-wp="2" ref={el => articleRef.current[1] = el} 
+			<article data-wp="2" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 2 ? 'active' : 'inactive'} intro`}>
 				<div className="centerWrap">
 			    <div className="text-logo" style={props.wp === 2 ? logo2style : null}>
@@ -190,7 +192,7 @@ const Main = (props) => {
 			    </div>
 			  </div>
 			</article>
-			{newsData && <article id="home" data-wp="3" ref={el => articleRef.current[2] = el} 
+			{newsData && <article id="home" data-wp="3" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 3 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: newsData.title}} />
 	    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
@@ -199,7 +201,7 @@ const Main = (props) => {
 	    	<br/></React.Fragment>}
 	    	{props.wp === 3 && <ExtraBalls wp={props.wp} />}
 			</article>}
-			{infoData && <article id="info" data-wp="4" ref={el => articleRef.current[3] = el} 
+			{infoData && <article id="info" data-wp="4" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 4 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: infoData.title}} />
 	    	{infoData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: infoData.subtitle}} />
@@ -219,7 +221,7 @@ const Main = (props) => {
 				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>
 				{props.wp === 4 && <ExtraBalls wp={props.wp} />}
 			</article>}
-			{lineupData && <article id="lineup" data-wp="5" ref={el => articleRef.current[4] = el} 
+			{lineupData && <article id="lineup" data-wp="5" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 5 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: lineupData.title}} />
 	    	{lineupData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: lineupData.subtitle}} />
@@ -244,7 +246,7 @@ const Main = (props) => {
 				</div>
 				{props.wp === 5 && <ExtraBalls wp={props.wp} />}
 			</article>}
-			{galleryData && <article id="gallery" data-wp="6" ref={el => articleRef.current[5] = el} 
+			{galleryData && <article id="gallery" data-wp="6" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 6 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: galleryData.title}} />
 	    	{galleryData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: galleryData.subtitle}} />
@@ -263,7 +265,7 @@ const Main = (props) => {
 				</div>
 				{props.wp === 6 && <ExtraBalls wp={props.wp} />}
 			</article>}
-			{newsletterData && <article id="newsletter" data-wp="7" ref={el => articleRef.current[6] = el} 
+			{newsletterData && <article id="newsletter" data-wp="7" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 7 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: newsletterData.title}} />
 	    	{newsletterData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsletterData.subtitle}} />
@@ -283,7 +285,7 @@ const Main = (props) => {
 				{registeringNewsletter && <p>Bitte warten...</p>}
 				{props.wp === 7 && <ExtraBalls wp={props.wp} />}
 			</article>}
-			{contactData && <article id="kontakt" data-wp="8" ref={el => articleRef.current[7] = el} 
+			{contactData && <article id="kontakt" data-wp="8" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 8 ? 'active' : 'inactive'}`}>
 	    	<h1 dangerouslySetInnerHTML={{__html: contactData.title}} />
 	    	{contactData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: contactData.subtitle}} />
