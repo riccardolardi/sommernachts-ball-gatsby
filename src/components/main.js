@@ -279,8 +279,6 @@ const Main = (props) => {
 					<input type="email" value={newsletterEmail} placeholder="ihre@email.com" 
 						onChange={event => setNewsletterEmail(event.target.value)} />
 					{newsletterEmailIsValid && <button onClick={() => registerNewsletter()}>Registrieren</button>}
-					<br/>
-					<p>Sie können sich jederzeit wieder abmelden.</p>
 				</div>}
 				{registeringNewsletter && <p>Bitte warten...</p>}
 				{props.wp === 7 && <ExtraBalls wp={props.wp} />}
