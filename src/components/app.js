@@ -67,55 +67,64 @@ const App = (props) => {
 
 	const classes = Classnames({
 		'inverted': inverted,
-		'mobile-nav-open': mobileNavOpen
+		'mobile-nav-open': mobileNavOpen,
+		'isIE': isIE
 	})
 
   return (
     <div id="app" className={classes}>
-	    <Three show={isIntro || mobileNavOpen} />
-	    <aside className={`text-logo front 
-	    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
-	      <div className="row">
-	        <span className="left suffix-slash">Sommer</span>
-	        {/*<span className="right">Abgesagt</span>*/}
-	      </div>
-	      <div className="row">
-	        <span className="left suffix-slash">Nachts</span>
-	        {/*<span className="right">Aufgrund</span>*/}
-	      </div>
-	      <div className="row">
-	        <span className="left suffix-slash">Ball</span>
-	        {/*<span className="right">Coronavirus</span>*/}
-	      </div>
-	    </aside>
-	    <img src={logoSrcW} 
-	    	className={`migros-logo blend ${wp < 3 || 
-	    		mobileNavOpen ? 'show' : 'hide'}`} 
-	    			alt="Migros Kulturprozent" />
-	    <Main 
-	    	data={props.data} 
-	    	wp={wp} 
-	    	setWp={setWp} 
-	    	prevWp={prevWp} 
-	    	setPrevWp={setPrevWp} 
-	    	jumpTo={jumpTo} 
-	    	inverted={inverted} 
-	    	isIntro={isIntro} 
-	    	isMobile={isMobile} 
-	    	isTouch={isTouch} 
-	    	mobileNavOpen={mobileNavOpen} 
-	    	setMobileNavOpen={setMobileNavOpen} 
-	    	onExtraWheel={onExtraWheel}
-	    />
-	    <Navi 
-	    	data={props.data} 
-				wp={wp} 
-				jumpTo={jumpTo} 
-				isIntro={isIntro} 
-				isMobile={isMobile} 
-				mobileNavOpen={mobileNavOpen} 
-				onExtraWheel={onExtraWheel}
-	    /> 
+    	{isIE ? <React.Fragment>
+	      <h1>Ihr Browser (Internet Explorer) ist leider unsäglich veraltet.</h1>
+	      <h2>Diese Homepage kann so nicht angezeigt werden.</h2>
+	      <p>Bitte installieren Sie einen aktuellen Browser wie zB. <a href="https://www.google.com/chrome/">Google Chrome</a> oder <a href="https://www.mozilla.org/de/firefox/new/">Firefox</a>.</p>
+	      <p>Mehr Informationen darüber wieso man keine veralteten Browser benutzen sollte: <a href="https://www.browser-update.org/de/update.html">hier klicken</a></p>
+    	</React.Fragment> : 
+    	<React.Fragment>
+		    <Three show={isIntro || mobileNavOpen} />
+		    <aside className={`text-logo front 
+		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
+		      <div className="row">
+		        <span className="left suffix-slash">Sommer</span>
+		        {/*<span className="right">Abgesagt</span>*/}
+		      </div>
+		      <div className="row">
+		        <span className="left suffix-slash">Nachts</span>
+		        {/*<span className="right">Aufgrund</span>*/}
+		      </div>
+		      <div className="row">
+		        <span className="left suffix-slash">Ball</span>
+		        {/*<span className="right">Coronavirus</span>*/}
+		      </div>
+		    </aside>
+		    <img src={logoSrcW} 
+		    	className={`migros-logo blend ${wp < 3 || 
+		    		mobileNavOpen ? 'show' : 'hide'}`} 
+		    			alt="Migros Kulturprozent" />
+		    <Main 
+		    	data={props.data} 
+		    	wp={wp} 
+		    	setWp={setWp} 
+		    	prevWp={prevWp} 
+		    	setPrevWp={setPrevWp} 
+		    	jumpTo={jumpTo} 
+		    	inverted={inverted} 
+		    	isIntro={isIntro} 
+		    	isMobile={isMobile} 
+		    	isTouch={isTouch} 
+		    	mobileNavOpen={mobileNavOpen} 
+		    	setMobileNavOpen={setMobileNavOpen} 
+		    	onExtraWheel={onExtraWheel}
+		    />
+		    <Navi 
+		    	data={props.data} 
+					wp={wp} 
+					jumpTo={jumpTo} 
+					isIntro={isIntro} 
+					isMobile={isMobile} 
+					mobileNavOpen={mobileNavOpen} 
+					onExtraWheel={onExtraWheel}
+		    />
+	    </React.Fragment>}
 	  </div>
   )
 }
