@@ -1,6 +1,8 @@
 import React from "react"
 import ExtraBalls from "./extraballs"
 import { useScroll, useDebounce } from "react-use"
+import remark from "remark"
+import remarkHypher from "remark-hypher"
 import Vimeo from "@u-wave/react-vimeo"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
@@ -25,6 +27,13 @@ const logoSrcW = require('../assets/migros_w.svg')
 const scrollDownSrc = require('../assets/scroll-down.svg')
 const menuSrc = require('../assets/menu.svg')
 const closeSrc = require('../assets/close.svg')
+
+let newsText
+let infoText
+let lineupText
+let galleryText
+let newsletterText
+let contactText
 
 const Main = (props) => {
 
@@ -60,6 +69,15 @@ const Main = (props) => {
 	const [registeringNewsletter, setRegisteringNewsletter] = React.useState(false)
 
 	useDebounce(() => setAllowScroll(true), 250, [delta])
+
+	React.useEffect(() => {
+		newsText = remark().use(remarkHypher).processSync(newsData.text)
+		infoText = remark().use(remarkHypher).processSync(infoData.text)
+		lineupText = remark().use(remarkHypher).processSync(lineupData.text)
+		galleryText = remark().use(remarkHypher).processSync(galleryData.text)
+		newsletterText = remark().use(remarkHypher).processSync(newsletterData.text)
+		contactText = remark().use(remarkHypher).processSync(contactData.text)
+	}, [])
 
 	React.useEffect(() => {
 		setShowScrollIndicator(props.wp !== 9 && (props.wp < 3 || scrolledPercent > 0.5 || props.isMobile))
@@ -197,7 +215,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: newsData.title}} />
 	    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsData.text}} />
+	    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsText}} />
 	    	<br/></React.Fragment>}
 	    	{props.wp === 3 && <ExtraBalls wp={props.wp} />}
 			</article>}
@@ -206,7 +224,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: infoData.title}} />
 	    	{infoData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: infoData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: infoData.text}} />
+	    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: infoText}} />
 	    	<br/></React.Fragment>}
 				<h3>Partner</h3>
 				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
@@ -226,7 +244,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: lineupData.title}} />
 	    	{lineupData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: lineupData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{lineupData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: lineupData.text}} />
+	    	{lineupData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: lineupText}} />
 	    	<br/></React.Fragment>}
 				<div className="isolate">
 					{lineupData.artists.map((artist, index) => {
@@ -251,7 +269,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: galleryData.title}} />
 	    	{galleryData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: galleryData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: galleryData.text}} />
+	    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: galleryText}} />
 	    	<br/></React.Fragment>}
 				<div className="isolate">
 					{galleryData.videos && galleryData.videos.map((video, index) => {
@@ -270,7 +288,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: newsletterData.title}} />
 	    	{newsletterData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsletterData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsletterData.text}} />
+	    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsletterText}} />
 	    	<br/></React.Fragment>}
 				{newsletterError && <p>Es ist uns leider ein Fehler unterlaufen.</p>}
 				{newsletterSignupSuccess && <p>Super! Sie sind ab sofort für unseren Newsletter registriert!</p>}
@@ -288,7 +306,7 @@ const Main = (props) => {
 	    	<h1 dangerouslySetInnerHTML={{__html: contactData.title}} />
 	    	{contactData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: contactData.subtitle}} />
 	    	<br/></React.Fragment>}
-	    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: contactData.text}} />
+	    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: contactText}} />
 	    	<br/></React.Fragment>}
 				{props.wp === 8 && <ExtraBalls wp={props.wp} />}
 			</article>}

@@ -33,11 +33,27 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-hypher`,
+            options: {
+              language: require(`hyphenation.de`),
+              leftmin: 3,
+              rightmin: 2,
+              minLength: 6,
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-source-graphql`,
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `${process.env.WP_BASE_URL || 'http://2020.sommernachts-ball.ch'}/graphql`
+        url: `${process.env.WP_BASE_URL || 'http://2020-wp.sommernachts-ball.ch'}/graphql`
       },
     },
     `gatsby-plugin-offline`,

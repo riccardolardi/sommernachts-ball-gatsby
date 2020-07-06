@@ -28,7 +28,6 @@ main#main {
 	article {
 		position: relative;
 		min-height: 100vh;
-		hyphens: auto;
 		opacity: 0;
 		pointer-events: none;
 		padding-top: calc(#{$pad * 4} + 4vmin);
