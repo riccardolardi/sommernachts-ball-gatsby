@@ -3,6 +3,7 @@ import ExtraBalls from "./extraballs"
 import { useScroll, useDebounce } from "react-use"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
+import hyphenation from "hyphenation.de"
 import Vimeo from "@u-wave/react-vimeo"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
@@ -27,13 +28,6 @@ const logoSrcW = require('../assets/migros_w.svg')
 const scrollDownSrc = require('../assets/scroll-down.svg')
 const menuSrc = require('../assets/menu.svg')
 const closeSrc = require('../assets/close.svg')
-
-let newsText
-let infoText
-let lineupText
-let galleryText
-let newsletterText
-let contactText
 
 const Main = (props) => {
 
@@ -69,15 +63,6 @@ const Main = (props) => {
 	const [registeringNewsletter, setRegisteringNewsletter] = React.useState(false)
 
 	useDebounce(() => setAllowScroll(true), 250, [delta])
-
-	React.useEffect(() => {
-		newsText = remark().use(remarkHypher).processSync(newsData.text)
-		infoText = remark().use(remarkHypher).processSync(infoData.text)
-		lineupText = remark().use(remarkHypher).processSync(lineupData.text)
-		galleryText = remark().use(remarkHypher).processSync(galleryData.text)
-		newsletterText = remark().use(remarkHypher).processSync(newsletterData.text)
-		contactText = remark().use(remarkHypher).processSync(contactData.text)
-	}, [])
 
 	React.useEffect(() => {
 		setShowScrollIndicator(props.wp !== 9 && (props.wp < 3 || scrolledPercent > 0.5 || props.isMobile))
@@ -164,6 +149,15 @@ const Main = (props) => {
 				})
 	}
 
+	const Hyphenate = (text) => {
+		return React.useMemo(() => remark().use(remarkHypher, {
+			language: require('hyphenation.de'),
+			leftmin: 4,
+			rightmin: 4,
+			// minLength: 8,
+		}).processSync(text), [])
+	}
+
 	const classes = Classnames({
 		'show': !props.mobileNavOpen,
 		'hide': props.mobileNavOpen,
@@ -212,102 +206,114 @@ const Main = (props) => {
 			</article>
 			{newsData && <article id="home" data-wp="3" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 3 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: newsData.title}} />
-	    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsText}} />
-	    	<br/></React.Fragment>}
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: newsData.title}} />
+		    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
+		    	<br/></React.Fragment>}
+	    	</div>
 	    	{props.wp === 3 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			{infoData && <article id="info" data-wp="4" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 4 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: infoData.title}} />
-	    	{infoData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: infoData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: infoText}} />
-	    	<br/></React.Fragment>}
-				<h3>Partner</h3>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.shopville.ch/"><img src={props.inverted ? shopvilleSrcB : shopvilleSrcW} alt="ShopVille" /></a>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sayflowers.ch/"><img src={props.inverted ? sayflowersSrcB : sayflowersSrcW} alt="SayFlowers" /></a>
-				<br/><br/>
-				<h3>Patronat</h3>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.zurich.ch/"><img src={props.inverted ? zurichSrcB : zurichSrcW} alt="Stadt Zurich" /></a>
-				<br/><br/>
-				<h3>Medienpartner</h3>
-				<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: infoData.title}} />
+		    	{infoData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: infoData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(infoData.text)}} />
+		    	<br/></React.Fragment>}
+					<h3>Partner</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.shopville.ch/"><img src={props.inverted ? shopvilleSrcB : shopvilleSrcW} alt="ShopVille" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sayflowers.ch/"><img src={props.inverted ? sayflowersSrcB : sayflowersSrcW} alt="SayFlowers" /></a>
+					<br/><br/>
+					<h3>Patronat</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.zurich.ch/"><img src={props.inverted ? zurichSrcB : zurichSrcW} alt="Stadt Zurich" /></a>
+					<br/><br/>
+					<h3>Medienpartner</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>
+				</div>
 				{props.wp === 4 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			{lineupData && <article id="lineup" data-wp="5" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 5 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: lineupData.title}} />
-	    	{lineupData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: lineupData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{lineupData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: lineupText}} />
-	    	<br/></React.Fragment>}
-				<div className="isolate">
-					{lineupData.artists.map((artist, index) => {
-						return <section key={index} className="artist-info">
-							<h2 dangerouslySetInnerHTML={{__html: artist.name}} className="link" onClick={() => toggleArtistDetails(index)} />
-							<div className="details">
-								<img src={artist.image.sourceUrl} className="artist-photo" alt={artist.image.altText} />
-								<div className="artist-text">
-									<p dangerouslySetInnerHTML={{__html: artist.text}} />
-									<p><a dangerouslySetInnerHTML={{__html: artist.link}} target="_blank" rel="noopener noreferrer" href={artist.link} className="link" /></p>
-									{artist.facebook && <a target="_blank" rel="noopener noreferrer" href={artist.facebook}><FacebookIcon className="icon" /></a>}
-									{artist.instagram && <a target="_blank" rel="noopener noreferrer" href={artist.instagram}><InstagramIcon className="icon" /></a>}
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: lineupData.title}} />
+		    	{lineupData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: lineupData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{lineupData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(lineupData.text)}} />
+		    	<br/></React.Fragment>}
+					<div className="isolate">
+						{lineupData.artists.map((artist, index) => {
+							return <section key={index} className="artist-info">
+								<h2 dangerouslySetInnerHTML={{__html: artist.name}} className="link" onClick={() => toggleArtistDetails(index)} />
+								<div className="details">
+									<img src={artist.image.sourceUrl} className="artist-photo" alt={artist.image.altText} />
+									<div className="artist-text">
+										<p dangerouslySetInnerHTML={{__html: Hyphenate(artist.text)}} />
+										<p><a dangerouslySetInnerHTML={{__html: artist.link}} target="_blank" rel="noopener noreferrer" href={artist.link} className="link" /></p>
+										{artist.facebook && <a target="_blank" rel="noopener noreferrer" href={artist.facebook}><FacebookIcon className="icon" /></a>}
+										{artist.instagram && <a target="_blank" rel="noopener noreferrer" href={artist.instagram}><InstagramIcon className="icon" /></a>}
+									</div>
 								</div>
-							</div>
-						</section>
-					})}
+							</section>
+						})}
+					</div>
 				</div>
 				{props.wp === 5 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			{galleryData && <article id="gallery" data-wp="6" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 6 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: galleryData.title}} />
-	    	{galleryData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: galleryData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: galleryText}} />
-	    	<br/></React.Fragment>}
-				<div className="isolate">
-					{galleryData.videos && galleryData.videos.map((video, index) => {
-						return <Vimeo key={index} className="video" video={video.vimeoUrl} showByline={false} color={'ffffff'} showPortrait={false} />
-					})}
-					{galleryData.images && <div className="gallery-photos">
-						{galleryData.images.map((el, index) => {
-							return <img key={index} src={el.image.sourceUrl} className="gallery-photo" alt={el.image.altText} />
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: galleryData.title}} />
+		    	{galleryData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: galleryData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(galleryData.text)}} />
+		    	<br/></React.Fragment>}
+					<div className="isolate">
+						{galleryData.videos && galleryData.videos.map((video, index) => {
+							return <Vimeo key={index} className="video" video={video.vimeoUrl} showByline={false} color={'ffffff'} showPortrait={false} />
 						})}
-					</div>}
+						{galleryData.images && <div className="gallery-photos">
+							{galleryData.images.map((el, index) => {
+								return <img key={index} src={el.image.sourceUrl} className="gallery-photo" alt={el.image.altText} />
+							})}
+						</div>}
+					</div>
 				</div>
 				{props.wp === 6 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			{newsletterData && <article id="newsletter" data-wp="7" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 7 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: newsletterData.title}} />
-	    	{newsletterData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsletterData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: newsletterText}} />
-	    	<br/></React.Fragment>}
-				{newsletterError && <p>Es ist uns leider ein Fehler unterlaufen.</p>}
-				{newsletterSignupSuccess && <p>Super! Sie sind ab sofort für unseren Newsletter registriert!</p>}
-				{!newsletterSignupSuccess && !newsletterError && !registeringNewsletter && 
-				<div className={`newsletter-form isolate ${props.inverted ? 'inverted' : ''}`}>
-					<input type="email" value={newsletterEmail} placeholder="ihre@email.com" 
-						onChange={event => setNewsletterEmail(event.target.value)} />
-					{newsletterEmailIsValid && <button onClick={() => registerNewsletter()}>Registrieren</button>}
-				</div>}
-				{registeringNewsletter && <p>Bitte warten...</p>}
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: newsletterData.title}} />
+		    	{newsletterData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsletterData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsletterData.text)}} />
+		    	<br/></React.Fragment>}
+					{newsletterError && <p>Es ist uns leider ein Fehler unterlaufen.</p>}
+					{newsletterSignupSuccess && <p>Super! Sie sind ab sofort für unseren Newsletter registriert!</p>}
+					{!newsletterSignupSuccess && !newsletterError && !registeringNewsletter && 
+					<div className={`newsletter-form isolate ${props.inverted ? 'inverted' : ''}`}>
+						<input type="email" value={newsletterEmail} placeholder="ihre@email.com" 
+							onChange={event => setNewsletterEmail(event.target.value)} />
+						{newsletterEmailIsValid && <button onClick={() => registerNewsletter()}>Registrieren</button>}
+					</div>}
+					{registeringNewsletter && <p>Bitte warten...</p>}
+				</div>
 				{props.wp === 7 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			{contactData && <article id="kontakt" data-wp="8" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 8 ? 'active' : 'inactive'}`}>
-	    	<h1 dangerouslySetInnerHTML={{__html: contactData.title}} />
-	    	{contactData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: contactData.subtitle}} />
-	    	<br/></React.Fragment>}
-	    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: contactText}} />
-	    	<br/></React.Fragment>}
+				<div className="content">
+		    	<h1 dangerouslySetInnerHTML={{__html: contactData.title}} />
+		    	{contactData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: contactData.subtitle}} />
+		    	<br/></React.Fragment>}
+		    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(contactData.text)}} />
+		    	<br/></React.Fragment>}
+	    	</div>
 				{props.wp === 8 && <ExtraBalls wp={props.wp} />}
 			</article>}
 			<article data-wp="9" ref={el => articleRef.current[8] = el} 

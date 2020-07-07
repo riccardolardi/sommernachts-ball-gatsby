@@ -36,6 +36,11 @@ main#main {
 			opacity: 1;
 			pointer-events: auto;
 
+			.content {
+				opacity: 1;
+				transition: opacity 250ms 125ms;
+			}
+
 			&.intro {
 				transition: opacity 250ms 125ms;
 			}
@@ -79,6 +84,10 @@ main#main {
 
 		&[data-wp="9"] {
 			
+		}
+
+		.content {
+			opacity: 0;
 		}
 
 		.centerWrap {

@@ -13,10 +13,10 @@ const ExtraBalls = React.memo(function ExtraBalls(props) {
     React.useRef(null)
   ]
 
-    React.useEffect(() => {
-      setIsMounted(true)
-      translations.forEach(el => el.current = Math.random() * -2)
-    }, [])
+  React.useEffect(() => {
+    setIsMounted(true)
+    translations.forEach(el => el.current = Math.random() * -2)
+  }, [])
 
   return (
     <React.Fragment>
