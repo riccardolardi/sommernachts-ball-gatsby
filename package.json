@@ -8,7 +8,7 @@
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
     "@bumped-inc/gatsby-plugin-optional-chaining": "^1.0.0",
-    "gatsby": "^2.23.21",
+    "gatsby": "^2.23.22",
     "gatsby-image": "^2.4.12",
     "gatsby-plugin-manifest": "^2.4.17",
     "gatsby-plugin-offline": "^3.2.16",
@@ -23,12 +23,12 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-player": "^2.5.0"
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@u-wave/react-vimeo": "^0.9.0",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
     "easy-scroll": "^0.7.0",

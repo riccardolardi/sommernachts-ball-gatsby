@@ -4,7 +4,7 @@ import { useScroll, useDebounce } from "react-use"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
 import hyphenation from "hyphenation.de"
-import Vimeo from "@u-wave/react-vimeo"
+import ReactPlayer from "react-player/lazy"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import Classnames from "classnames"
@@ -250,7 +250,28 @@ const Main = (props) => {
 							return <section key={index} className="artist-info">
 								<h2 dangerouslySetInnerHTML={{__html: artist.name}} className="link" onClick={() => toggleArtistDetails(index)} />
 								<div className="details">
-									<img src={artist.image.sourceUrl} className="artist-photo" alt={artist.image.altText} />
+									<div className="artist-media">
+										{artist.image && <img src={artist.image.sourceUrl} className="artist-photo" alt={artist.image.altText} />}
+										{artist.video && <ReactPlayer 
+											className="video artist-video" 
+											url={artist.video} 
+											width="100%" height="100%" 
+											config={{vimeo: {
+												playerOptions: {
+													title: true,
+													byline: false,
+													color: 'ffffff',
+													portrait: false
+												}
+											}, 
+											youtube: {
+			      						playerVars: {
+			      							showinfo: false,
+			      							color: 'white'
+			      						}
+			    						}}}
+										/>}
+									</div>
 									<div className="artist-text">
 										<p dangerouslySetInnerHTML={{__html: Hyphenate(artist.text)}} />
 										<p><a dangerouslySetInnerHTML={{__html: artist.link}} target="_blank" rel="noopener noreferrer" href={artist.link} className="link" /></p>
@@ -274,7 +295,27 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 					<div className="isolate">
 						{galleryData.videos && galleryData.videos.map((video, index) => {
-							return <Vimeo key={index} className="video" video={video.vimeoUrl} showByline={false} color={'ffffff'} showPortrait={false} />
+							return <ReactPlayer 
+								key={index} 
+								className="video" 
+								width="100%" 
+								height="100%" 
+								url={video.url} 
+								config={{vimeo: {
+									playerOptions: {
+										title: true,
+										byline: false,
+										color: 'ffffff',
+										portrait: false
+									}
+								}, 
+								youtube: {
+      						playerVars: {
+      							showinfo: false,
+      							color: 'white'
+      						}
+    						}}}
+							/>
 						})}
 						{galleryData.images && <div className="gallery-photos">
 							{galleryData.images.map((el, index) => {
@@ -293,8 +334,8 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsletterData.text)}} />
 		    	<br/></React.Fragment>}
-					{newsletterError && <p>Es ist uns leider ein Fehler unterlaufen.</p>}
-					{newsletterSignupSuccess && <p>Super! Sie sind ab sofort für unseren Newsletter registriert!</p>}
+					{newsletterError && <p dangerouslySetInnerHTML={{__html: newsletterData.newsletterErrorMessage}} />}
+					{newsletterSignupSuccess && <p dangerouslySetInnerHTML={{__html: newsletterData.newsletterSuccessMessage}} />}
 					{!newsletterSignupSuccess && !newsletterError && !registeringNewsletter && 
 					<div className={`newsletter-form isolate ${props.inverted ? 'inverted' : ''}`}>
 						<input type="email" value={newsletterEmail} placeholder="ihre@email.com" 

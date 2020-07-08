@@ -56,6 +56,7 @@ const IndexPage = () => {
 		              sourceUrl(size: LARGE)
 		              altText
 		            }
+		            video
 		          }
 		        }
 		      }
@@ -70,7 +71,7 @@ const IndexPage = () => {
 		          text
 		          title
 		          videos {
-		            vimeoUrl
+		            url
 		          }
 		          images {
 		            image {
@@ -90,6 +91,8 @@ const IndexPage = () => {
 		          subtitle
 		          text
 		          title
+		          newsletterErrorMessage
+		          newsletterSuccessMessage
 		        }
 		      }
 		    }

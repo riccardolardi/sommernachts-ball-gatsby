@@ -164,18 +164,24 @@ main#main {
 					}
 				}
 
-				.artist-photo {
+				.artist-media {
 					float: right;
-					padding: $pad / 2 0 0 $pad / 2;
-					margin: 1vmax 0 $pad / 2;
 					width: 33%;
-					max-width: 100%;
 
 					@include breakpoint($breakMobile) {
-						float: none;
 						width: auto;
+						float: none;
+					}
+				}
+
+				.artist-photo, 
+				.artist-video {
+					max-width: 100%;
+					margin: 1vmax 0 $pad / 2;
+
+					@include breakpoint($breakMobile) {
 						margin-bottom: 0;
-						padding: $pad / 2 0 0;
+						padding: 0;
 					}
 				}
 			}
@@ -184,6 +190,10 @@ main#main {
 		.video {
 			position: relative;
 			padding: 56.25% 0 0;
+
+			&+.video {
+				margin-top: $pad;
+			}
 
 			iframe {
 				display: block;
