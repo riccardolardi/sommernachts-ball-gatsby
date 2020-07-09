@@ -7,6 +7,7 @@ import hyphenation from "hyphenation.de"
 import ReactPlayer from "react-player/lazy"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
+import textTolink from "text-to-link"
 import Classnames from "classnames"
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar"
 import "../styles/main.scss"
@@ -274,7 +275,7 @@ const Main = (props) => {
 									</div>
 									<div className="artist-text">
 										<p dangerouslySetInnerHTML={{__html: Hyphenate(artist.text)}} />
-										<p><a dangerouslySetInnerHTML={{__html: artist.link}} target="_blank" rel="noopener noreferrer" href={artist.link} className="link" /></p>
+										<p><a dangerouslySetInnerHTML={{__html: artist.link.replace(/(^\w+:|^)\/\//, '')}} target="_blank" rel="noopener noreferrer" href={artist.link} className="link" /></p>
 										{artist.facebook && <a target="_blank" rel="noopener noreferrer" href={artist.facebook}><FacebookIcon className="icon" /></a>}
 										{artist.instagram && <a target="_blank" rel="noopener noreferrer" href={artist.instagram}><InstagramIcon className="icon" /></a>}
 									</div>

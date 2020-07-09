@@ -64,27 +64,27 @@ nav#navi {
 	  		}
 
 	  		&:nth-child(1) {
-	  			transition: all 250ms 125ms;
+	  			transition: all 250ms calc(250ms / (7 - 1));
 	  		}
 
 	  		&:nth-child(2) {
-	  			transition: all 250ms 250ms;
+	  			transition: all 250ms calc(250ms / (7 - 2));
 	  		}
 
 	  		&:nth-child(3) {
-	  			transition: all 250ms 375ms;
+	  			transition: all 250ms calc(250ms / (7 - 3));
 	  		}
 
 	  		&:nth-child(4) {
-	  			transition: all 250ms 500ms;
+	  			transition: all 250ms calc(250ms / (7 - 4));
 	  		}
 
 	  		&:nth-child(5) {
-	  			transition: all 250ms 625ms;
+	  			transition: all 250ms calc(250ms / (7 - 5));
 	  		}
 
 	  		&:nth-child(6) {
-	  			transition: all 250ms 750ms;
+	  			transition: all 250ms calc(250ms / (7 - 6));
 	  		}
   		}
   	}
