@@ -4,10 +4,10 @@ import { useScroll, useDebounce } from "react-use"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
 import hyphenation from "hyphenation.de"
+import Autolinker from "autolinker"
 import ReactPlayer from "react-player/lazy"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
-import textTolink from "text-to-link"
 import Classnames from "classnames"
 import { CircularProgressbarWithChildren, buildStyles } from "react-circular-progressbar"
 import "../styles/main.scss"
@@ -156,7 +156,10 @@ const Main = (props) => {
 			leftmin: 4,
 			rightmin: 4,
 			// minLength: 8,
-		}).processSync(text), [])
+		}).processSync(Autolinker.link(text, {
+			newWindow: true,
+			className: 'link'
+		})), [])
 	}
 
 	const classes = Classnames({
