@@ -237,7 +237,7 @@ main#main {
 			}
 
 			@include breakpoint($breakMobile) {
-				width: 100%;
+				width: 100% !important;
 				margin: $pad 0 0 !important;
 				padding: 0 !important;
 			}
