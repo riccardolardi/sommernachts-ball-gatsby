@@ -39,7 +39,7 @@
     "prettier": "^1.19.1",
     "react-circular-progressbar": "^2.0.3",
     "react-device-detect": "^1.13.1",
-    "react-three-fiber": "^4.2.13",
+    "react-three-fiber": "^4.2.14",
     "react-use": "^15.3.2",
     "three": "^0.118.3"
   },

@@ -167,18 +167,20 @@ main#main {
 				.artist-media {
 					float: right;
 					width: 33%;
+					margin-left: $pad / 2;
 
 					@include breakpoint($breakMobile) {
 						width: auto;
 						float: none;
+						margin-left: 0;
 					}
 				}
 
 				.artist-photo, 
 				.artist-video {
 					max-width: 100%;
-					width: auto;
-					height: auto;
+					width: 100%;
+					height: 100%;
 					margin: 1vmax 0 $pad / 2;
 
 					@include breakpoint($breakMobile) {
@@ -222,7 +224,7 @@ main#main {
 			display: block;
 			margin-top: $pad / 2;
 			width: 50% !important;
-			height: auto !important;
+			height: 100% !important;
 
 			&:nth-child(even) {
 				padding-left: $pad / 4;

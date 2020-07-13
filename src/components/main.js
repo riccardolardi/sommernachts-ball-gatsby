@@ -1,7 +1,7 @@
 import React from "react"
 import ExtraBalls from "./extraballs"
 import { useScroll } from "react-use"
-import { LazyLoadImage } from "react-lazy-load-image-component"
+import { LazyLoadImage, LazyLoadComponent } from "react-lazy-load-image-component"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
 import hyphenation from "hyphenation.de"
@@ -248,32 +248,34 @@ const Main = (props) => {
 								<h2 dangerouslySetInnerHTML={{__html: artist.name}} className="link" onClick={() => toggleArtistDetails(index)} />
 								<div className="details">
 									<div className="artist-media">
-										{artist.image && <img 
+										{artist.image && <LazyLoadImage 
 											className="artist-photo" 
-											src={props.wp === 5 ? artist.image.sourceUrl : null} 
+											src={artist.image.sourceUrl} 
 											width={artist.image.mediaDetails.width} 
 											height={artist.image.mediaDetails.height} 
 											alt={artist.image.altText} />}
-										{artist.video && <ReactPlayer 
-											className="video artist-video" 
-											url={props.wp === 5 ? artist.video : null} 
-											width="100%" 
-											height="100%" 
-											config={{vimeo: {
-												playerOptions: {
-													title: true,
-													byline: false,
-													color: 'ffffff',
-													portrait: false
-												}
-											}, 
-											youtube: {
-			      						playerVars: {
-			      							showinfo: false,
-			      							color: 'white'
-			      						}
-			    						}}}
-										/>}
+										{artist.video && <LazyLoadComponent>
+											<ReactPlayer 
+												className="video artist-video" 
+												url={artist.video} 
+												width="100%" 
+												height="100%" 
+												config={{vimeo: {
+													playerOptions: {
+														title: true,
+														byline: false,
+														color: 'ffffff',
+														portrait: false
+													}
+												}, 
+												youtube: {
+				      						playerVars: {
+				      							showinfo: false,
+				      							color: 'white'
+				      						}
+				    						}}}
+											/>
+										</LazyLoadComponent>}
 									</div>
 									<div className="artist-text">
 										<p dangerouslySetInnerHTML={{__html: Hyphenate(artist.text)}} />
@@ -298,27 +300,29 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 					<div className="isolate">
 						{galleryData.videos && galleryData.videos.map((video, index) => {
-							return <ReactPlayer 
-								key={index} 
-								className="video" 
-								width="100%" 
-								height="100%" 
-								url={video.url} 
-								config={{vimeo: {
-									playerOptions: {
-										title: true,
-										byline: false,
-										color: 'ffffff',
-										portrait: false
-									}
-								}, 
-								youtube: {
-      						playerVars: {
-      							showinfo: false,
-      							color: 'white'
-      						}
-    						}}}
-							/>
+							return <LazyLoadComponent>
+								<ReactPlayer 
+									key={index} 
+									className="video" 
+									width="100%" 
+									height="100%" 
+									url={video.url} 
+									config={{vimeo: {
+										playerOptions: {
+											title: true,
+											byline: false,
+											color: 'ffffff',
+											portrait: false
+										}
+									}, 
+									youtube: {
+	      						playerVars: {
+	      							showinfo: false,
+	      							color: 'white'
+	      						}
+	    						}}}
+								/>
+							</LazyLoadComponent>
 						})}
 						{galleryData.images && <div className="gallery-photos">
 							{galleryData.images.map((el, index) => {
