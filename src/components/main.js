@@ -1,11 +1,12 @@
 import React from "react"
 import ExtraBalls from "./extraballs"
-import { useScroll, useDebounce } from "react-use"
+import { useScroll } from "react-use"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
 import hyphenation from "hyphenation.de"
 import Autolinker from "autolinker"
-import ReactPlayer from "react-player/lazy"
+import ReactPlayer from "react-player"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import Classnames from "classnames"
@@ -56,14 +57,11 @@ const Main = (props) => {
 	const [scrolledPercent, setScrolledPercent] = React.useState(0)
 	const [showScrollIndicator, setShowScrollIndicator] = React.useState(false)
 	const [allowScroll, setAllowScroll] = React.useState(true)
-	const [delta, setDelta] = React.useState(null)
 	const [newsletterEmail, setNewsletterEmail] = React.useState('')
 	const [newsletterEmailIsValid, setNewsletterEmailIsValid] = React.useState(false)
 	const [newsletterError, setNewsletterError] = React.useState(false)
 	const [newsletterSignupSuccess, setNewsletterSignupSuccess] = React.useState(false)
 	const [registeringNewsletter, setRegisteringNewsletter] = React.useState(false)
-
-	useDebounce(() => setAllowScroll(true), 250, [delta])
 
 	React.useEffect(() => {
 		setShowScrollIndicator(props.wp !== 9 && (props.wp < 3 || scrolledPercent > 0.5 || props.isMobile))
@@ -74,9 +72,8 @@ const Main = (props) => {
 	}, [newsletterEmail])
 
 	React.useEffect(() => {
-		if (props.wp > props.prevWp && props.isTouch && 
-			props.wp > 2 && props.wp !== 9 && 
-			(props.isTouch || !props.isTouch && delta > 20)) {
+		if (props.wp > props.prevWp && props.isMobile && 
+			props.wp > 2 && props.wp < 9) {
 			setAllowScroll(false)
 			props.jumpTo(props.wp, 250)
 			setTimeout(() => setAllowScroll(true), 250)
@@ -114,10 +111,6 @@ const Main = (props) => {
 		translateX(${(1 - (-(Math.cos(Math.PI * scrolledPercent) - 1) / 2)) * winWidth / -25}px)
 		translateY(${Math.pow(10, 10 * scrolledPercent - 10) * winHeight/-20}px)`
 	} : {}
-
-	function onWheel(event) {
-		setDelta(event.deltaY)
-	}
 
 	function scrollToNextWP() {
 		const duration = props.wp < 3 ? 3000 / props.wp : 250
@@ -169,7 +162,7 @@ const Main = (props) => {
 	})
 
   return (
-  	<main id="main" className={classes} ref={scrollRef} onWheel={onWheel}>
+  	<main id="main" className={classes} ref={scrollRef}>
 			<article data-wp="1" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 1 ? 'active' : 'inactive'} intro`}>
 				<div className="centerWrap">
@@ -255,11 +248,17 @@ const Main = (props) => {
 								<h2 dangerouslySetInnerHTML={{__html: artist.name}} className="link" onClick={() => toggleArtistDetails(index)} />
 								<div className="details">
 									<div className="artist-media">
-										{artist.image && <img src={artist.image.sourceUrl} className="artist-photo" alt={artist.image.altText} />}
+										{artist.image && <img 
+											className="artist-photo" 
+											src={props.wp === 5 ? artist.image.sourceUrl : null} 
+											width={artist.image.mediaDetails.width} 
+											height={artist.image.mediaDetails.height} 
+											alt={artist.image.altText} />}
 										{artist.video && <ReactPlayer 
 											className="video artist-video" 
-											url={artist.video} 
-											width="100%" height="100%" 
+											url={props.wp === 5 ? artist.video : null} 
+											width="100%" 
+											height="100%" 
 											config={{vimeo: {
 												playerOptions: {
 													title: true,
@@ -323,7 +322,14 @@ const Main = (props) => {
 						})}
 						{galleryData.images && <div className="gallery-photos">
 							{galleryData.images.map((el, index) => {
-								return <img key={index} src={el.image.sourceUrl} className="gallery-photo" alt={el.image.altText} />
+								return <LazyLoadImage 
+									key={index} 
+									src={el.image.sourceUrl} 
+									width={el.image.mediaDetails.width} 
+									height={el.image.mediaDetails.height} 
+									className="gallery-photo" 
+									threshold={200} 
+									alt={el.image.altText} />
 							})}
 						</div>}
 					</div>
@@ -392,7 +398,6 @@ const Main = (props) => {
 					<img src={closeSrc} className="scroll-indicator-content close blend" alt="" />
 				</CircularProgressbarWithChildren>
 			</span>
-			<span className={`scroll-timer blend ${props.isTouch || allowScroll ? 'hide' : 'show'}`} />
   	</main>
   )
 }

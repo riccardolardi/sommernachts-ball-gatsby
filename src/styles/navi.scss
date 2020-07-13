@@ -6,10 +6,10 @@ nav#navi {
 	bottom: 4vmin;
 	left: 4vmin;
 	transform: translateX(0px);
-	transition: opacity 250ms 0ms;
 
 	&.show {
 		opacity: 1;
+		transition: opacity 250ms 0ms;
 	}
 
 	&.hide {

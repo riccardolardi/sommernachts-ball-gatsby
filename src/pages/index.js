@@ -53,7 +53,11 @@ const IndexPage = () => {
 		            name
 		            text
 		            image {
-		              sourceUrl(size: LARGE)
+		            	mediaDetails {
+		            		width
+		            		height
+		            	}
+		              sourceUrl(size: MEDIUM)
 		              altText
 		            }
 		            video
@@ -75,6 +79,10 @@ const IndexPage = () => {
 		          }
 		          images {
 		            image {
+		            	mediaDetails {
+		            		width
+		            		height
+		            	}
 		              altText
 		              sourceUrl(size: LARGE)
 		            }

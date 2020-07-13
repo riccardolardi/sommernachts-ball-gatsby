@@ -22,19 +22,19 @@ const ExtraBalls = React.memo(function ExtraBalls(props) {
     <React.Fragment>
       <span className={`extra-ball blend leading 
         wp${props.wp} ${isMounted ? 'show' : 'hide'}`} 
-          style={{transform: `translateZ(${translations[0].current}px)`}} /> 
+          style={{transform: `translate3d(0, 0, ${translations[0].current}px)`}} /> 
       <span className={`extra-ball blend leading 
         wp${props.wp} ${isMounted ? 'show' : 'hide'}`} 
-          style={{transform: `translateZ(${translations[1].current}px)`}} /> 
+          style={{transform: `translate3d(0, 0, ${translations[1].current}px)`}} /> 
       <span className={`extra-ball blend trailing 
         wp${props.wp} ${isMounted ? 'show' : 'hide'}`} 
-          style={{transform: `translateZ(${translations[2].current}px)`}} /> 
+          style={{transform: `translate3d(0, 0, ${translations[2].current}px)`}} /> 
       <span className={`extra-ball blend trailing 
         wp${props.wp} ${isMounted ? 'show' : 'hide'}`} 
-          style={{transform: `translateZ(${translations[3].current}px)`}} /> 
+          style={{transform: `translate3d(0, 0, ${translations[3].current}px)`}} /> 
       <span className={`extra-ball blend trailing 
         wp${props.wp} ${isMounted ? 'show' : 'hide'}`} 
-          style={{transform: `translateZ(${translations[4].current}px)`}} /> 
+          style={{transform: `translate3d(0, 0, ${translations[4].current}px)`}} /> 
     </React.Fragment>
   )
 })

@@ -177,6 +177,8 @@ main#main {
 				.artist-photo, 
 				.artist-video {
 					max-width: 100%;
+					width: auto;
+					height: auto;
 					margin: 1vmax 0 $pad / 2;
 
 					@include breakpoint($breakMobile) {
@@ -219,8 +221,8 @@ main#main {
 		.gallery-photo {
 			display: block;
 			margin-top: $pad / 2;
-			width: 50%;
-			height: 100%;
+			width: 50% !important;
+			height: auto !important;
 
 			&:nth-child(even) {
 				padding-left: $pad / 4;
@@ -455,40 +457,4 @@ main#main {
 			}
 		}
 	}
-
-	.scroll-timer {
-		position: fixed;
-		top: 4.6vh;
-		right: 4.6vh;
-		transition: transform 250ms, opacity 250ms;
-
-		&.show {
-			opacity: 1;
-			transform: translateX(0px);
-		}
-
-		&.hide {
-			opacity: 0;
-			transform: translateX(10vh);
-		}
-
-		&:after {
-			display: block;
-			width: 8vh;
-			height: 8vh;
-			border-radius: 4vh;
-			content: "";
-			background: white;
-			animation: pulse 250ms infinite alternate linear;
-		}
-	}
-}
-
-@keyframes pulse {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(90deg);
-  }
 }

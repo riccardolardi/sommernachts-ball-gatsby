@@ -1,7 +1,7 @@
 import React from "react"
 import Classnames from "classnames"
 import { createBreakpoint } from "react-use"
-import { isIE, isSafari, isMobile as isTouch } from "react-device-detect"
+import { isIE, isEdge, isSafari, isMobile as isTouch } from "react-device-detect"
 import easyScroll from "easy-scroll"
 import Three from "./three"
 import Main from "./main"
@@ -73,15 +73,15 @@ const App = (props) => {
 
   return (
     <div id="app" className={classes}>
-    	{isIE ? <React.Fragment>
+    	{isIE || isEdge ? <React.Fragment>
 	      <h1>Ihr Browser (Internet Explorer) ist leider unsäglich veraltet.</h1>
 	      <h2>Diese Homepage kann so nicht angezeigt werden.</h2>
 	      <p>Bitte installieren Sie einen aktuellen Browser wie zB. <a href="https://www.google.com/chrome/">Google Chrome</a> oder <a href="https://www.mozilla.org/de/firefox/new/">Firefox</a>.</p>
 	      <p>Mehr Informationen darüber wieso man keine veralteten Browser benutzen sollte: <a href="https://www.browser-update.org/de/update.html">hier klicken</a></p>
     	</React.Fragment> : 
     	<React.Fragment>
-		    <Three show={isIntro || mobileNavOpen} />
-		    <aside className={`text-logo front 
+		    <Three show={isIntro || mobileNavOpen} aria-role="complementary" />
+		    <header className={`text-logo front 
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
 		        <span className="left suffix-slash">Sommer</span>
@@ -95,8 +95,8 @@ const App = (props) => {
 		        <span className="left suffix-slash">Ball</span>
 		        {/*<span className="right">Coronavirus</span>*/}
 		      </div>
-		    </aside>
-		    <img src={logoSrcW} 
+		    </header>
+		    <img src={logoSrcW} aria-role="complementary" 
 		    	className={`migros-logo blend ${wp < 3 || 
 		    		mobileNavOpen ? 'show' : 'hide'}`} 
 		    			alt="Migros Kulturprozent" />
