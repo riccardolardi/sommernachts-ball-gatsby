@@ -30,7 +30,7 @@ const Three = React.memo(function Three(props) {
   }
 
   return (
-  	<div id="three" className={`blend ${props.show ? 'show' : 'hide'}`}>
+  	<div id="three" role="complementary" className={`blend ${props.show ? 'show' : 'hide'}`}>
 	    <Canvas 
 	      gl={{ 
 	        antialias: true, 

@@ -247,6 +247,11 @@ main#main {
 
 		.newsletter-form {
 
+			label {
+				display: block;
+				margin-bottom: $pad;
+			}
+
 			input {
 				display: block;
 				border: 0.2vmax solid white;

@@ -352,7 +352,8 @@ const Main = (props) => {
 					{newsletterSignupSuccess && <p dangerouslySetInnerHTML={{__html: newsletterData.newsletterSuccessMessage}} />}
 					{!newsletterSignupSuccess && !newsletterError && !registeringNewsletter && 
 					<div className={`newsletter-form isolate ${props.inverted ? 'inverted' : ''}`}>
-						<input type="email" value={newsletterEmail} placeholder="ihre@email.com" 
+						<label for="email-input">Ihre Email-Adresse:</label>
+						<input id="email-input" type="email" value={newsletterEmail} placeholder="ihre@email.com" 
 							onChange={event => setNewsletterEmail(event.target.value)} />
 						{newsletterEmailIsValid && <button onClick={() => registerNewsletter()}>Registrieren</button>}
 					</div>}

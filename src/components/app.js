@@ -80,7 +80,7 @@ const App = (props) => {
 	      <p>Mehr Informationen darüber wieso man keine veralteten Browser benutzen sollte: <a href="https://www.browser-update.org/de/update.html">hier klicken</a></p>
     	</React.Fragment> : 
     	<React.Fragment>
-		    <Three show={isIntro || mobileNavOpen} aria-role="complementary" />
+		    <Three show={isIntro || mobileNavOpen} />
 		    <header className={`text-logo front 
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
@@ -96,8 +96,7 @@ const App = (props) => {
 		        {/*<span className="right">Coronavirus</span>*/}
 		      </div>
 		    </header>
-		    <img src={logoSrcW} aria-role="complementary" 
-		    	className={`migros-logo blend ${wp < 3 || 
+		    <img src={logoSrcW} className={`migros-logo blend ${wp < 3 || 
 		    		mobileNavOpen ? 'show' : 'hide'}`} 
 		    			alt="Migros Kulturprozent" />
 		    <Main 
