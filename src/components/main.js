@@ -300,9 +300,8 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 					<div className="isolate">
 						{galleryData.videos && galleryData.videos.map((video, index) => {
-							return <LazyLoadComponent>
+							return <LazyLoadComponent key={index}>
 								<ReactPlayer 
-									key={index} 
 									className="video" 
 									width="100%" 
 									height="100%" 
@@ -352,7 +351,7 @@ const Main = (props) => {
 					{newsletterSignupSuccess && <p dangerouslySetInnerHTML={{__html: newsletterData.newsletterSuccessMessage}} />}
 					{!newsletterSignupSuccess && !newsletterError && !registeringNewsletter && 
 					<div className={`newsletter-form isolate ${props.inverted ? 'inverted' : ''}`}>
-						<label for="email-input">Ihre Email-Adresse:</label>
+						<label htmlFor="email-input">Ihre Email-Adresse:</label>
 						<input id="email-input" type="email" value={newsletterEmail} placeholder="ihre@email.com" 
 							onChange={event => setNewsletterEmail(event.target.value)} />
 						{newsletterEmailIsValid && <button onClick={() => registerNewsletter()}>Registrieren</button>}

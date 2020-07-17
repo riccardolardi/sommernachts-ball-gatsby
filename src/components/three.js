@@ -11,7 +11,7 @@ let skipFrame = false
 
 const Three = React.memo(function Three(props) {
 
-  const Scene = () => {
+  const Scene = (props) => {
 	  const { size, gl, scene, camera } = useThree()
 	  const groupRef = React.useRef(null)
 
@@ -24,7 +24,7 @@ const Three = React.memo(function Three(props) {
 	    gl.render(scene, camera)
 	  }, 1)
 
-    return <group ref={groupRef} position={[0, 0, Math.min(size.width, size.height) * -1.5]}>
+    return props.hidden ? null : <group ref={groupRef} position={[0, 0, Math.min(size.width, size.height) * -1.5]}>
       <Ball /><Ball /><Ball /><Ball />
     </group>
   }
@@ -46,7 +46,7 @@ const Three = React.memo(function Three(props) {
 	      onCreated={({ gl, camera }) => {
 	        gl.setPixelRatio(pixelRatio)
 	      }}>
-	      <Scene />
+	      <Scene hidden={!props.show} />
 	    </Canvas>
     </div>
   )

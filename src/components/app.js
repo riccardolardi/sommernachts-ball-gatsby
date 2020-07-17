@@ -34,7 +34,7 @@ const App = (props) => {
 	const isMobile = useBreakpoint() === 'mobile'
 
 	React.useEffect(() => {
-		setInverted(!inverted)
+		setInverted(wp > 2 && wp < 9)
 		setMobileNavOpen(false)
 		setIsIntro(wp <= 2 || wp === 9)
 	}, [wp])
