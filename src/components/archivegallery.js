@@ -1,8 +1,8 @@
 import React from "react"
 import { LazyLoadImage, LazyLoadComponent } from "react-lazy-load-image-component"
-import CancelIcon from "@material-ui/icons/Cancel"
-import ArrowBackIcon from "@material-ui/icons/ArrowBack"
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward"
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined"
+import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined"
+import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined"
 import '../styles/archivegallery.scss'
 
 const logoSrcW = require('../assets/migros_w.svg')
@@ -53,9 +53,12 @@ const ArchiveGallery = (props) => {
 					{props.el.mediaDetails.meta?.copyright && 
 						<label className="meta-copyright">Copyright: {props.el.mediaDetails.meta.copyright}</label>}
 				</div>
-				{activeLightboxEl > 0 && <ArrowBackIcon className="icon back" fontSize="large" onClick={() => setActiveLightboxEl(activeLightboxEl - 1)} />}
-				{activeLightboxEl + 1 < data[activeGalleryIndex].acfArchiveGallery.media.length && <ArrowForwardIcon className="icon forward" fontSize="large" onClick={() => setActiveLightboxEl(activeLightboxEl + 1)} />}
-				<CancelIcon className="icon close" fontSize="large" onClick={() => setActiveLightboxEl(null)} />
+				{activeLightboxEl > 0 && 
+					<ArrowBackOutlinedIcon className="icon back" fontSize="large" onClick={() => setActiveLightboxEl(activeLightboxEl - 1)} />}
+				{activeLightboxEl + 1 < data[activeGalleryIndex].acfArchiveGallery.media.length && 
+					<ArrowForwardOutlinedIcon className="icon forward" fontSize="large" onClick={() => setActiveLightboxEl(activeLightboxEl + 1)} />}
+				<CloseOutlinedIcon className="icon close" fontSize="large" onClick={() => setActiveLightboxEl(null)} />
+				<label className="count">{(activeLightboxEl + 1) + ' / ' + data[activeGalleryIndex].acfArchiveGallery.media.length}</label>
 			</div>
 		)
 	}

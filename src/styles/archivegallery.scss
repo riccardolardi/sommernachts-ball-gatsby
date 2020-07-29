@@ -39,7 +39,6 @@
 		@include breakpoint($breakMobile) {
 	  	font-size: 5.6vmax;
 	  	line-height: 7.2vmax;
-	  	left: 6vmin;
 		}
 
 		.row {
@@ -180,13 +179,32 @@
 				font-family: sans-serif;
 				font-size: $pad / 4;
 				line-height: $pad / 2;
+
+				@include breakpoint($breakMobile) {
+					font-size: $pad / 2;
+					line-height: $pad;
+				}
 			}
+		}
+
+		.count {
+			position: absolute;
+			top: 4vmin;
+			left: 4vmin;
 		}
 	}
 
 	.icon {
 		width: $pad;
 		height: $pad;
+		fill: black;
+		background-color: white;
+		border-radius: $pad;
+
+		@include breakpoint($breakMobile) {
+			width: $pad * 2;
+			height: $pad * 2;
+		}
 
 		&.close {
 			position: absolute;

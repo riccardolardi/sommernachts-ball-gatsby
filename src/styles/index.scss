@@ -52,11 +52,12 @@ table {
 }
 
 html, body {
+	display: block;
 	height: 100vh;
 	overflow: hidden;
 
 	&.archive-gallery {
-		height: 100%;
+		height: auto;
 		overflow: auto;
 	}
 }
