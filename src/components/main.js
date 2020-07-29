@@ -298,6 +298,7 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(galleryData.text)}} />
 		    	<br/></React.Fragment>}
+		    	<p>Hier geht's zum <a className="link" target="_blank" rel="noopener noreferrer" href="/archive">Medien-Archiv</a></p><br/>
 					<div className="isolate">
 						{galleryData.videos && galleryData.videos.map((video, index) => {
 							return <LazyLoadComponent key={index}>
