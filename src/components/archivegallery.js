@@ -12,8 +12,10 @@ const ArchiveGallery = (props) => {
 	const [activeGalleryIndex, setActiveGalleryIndex] = React.useState(null)
 	const [activeLightboxEl, setActiveLightboxEl] = React.useState(null)
 
-	document.querySelector('html').classList.add('archive-gallery')
-	document.querySelector('body').classList.add('archive-gallery')
+	if (typeof window !== 'undefined') {
+		document.querySelector('html').classList.add('archive-gallery')
+		document.querySelector('body').classList.add('archive-gallery')
+	}
 
 	function onGalleryLinkClick(index) {
 		setActiveGalleryIndex(index)
