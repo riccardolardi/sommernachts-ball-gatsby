@@ -18,9 +18,14 @@ jobs:
         persist-credentials: false
     - run: ls -la
     - name: Build gatsby
-      uses: jzweifel/gatsby-cli-github-action@master
+      #uses: jzweifel/gatsby-cli-github-action@master
+      #with:
+        #gatsby-arg: build
+      uses: actions/setup-node@v1
       with:
-        gatsby-arg: build
+        node-version: "12.x"
+    - run: npm install
+    - run: npm run build
     - run: ls -la public
     - name: FTP deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
