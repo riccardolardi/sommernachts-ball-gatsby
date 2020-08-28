@@ -55,7 +55,6 @@ module.exports = {
         fieldName: `wpgraphql`,
         url: `${process.env.WP_BASE_URL}/graphql`
       },
-    },
-    `gatsby-plugin-offline`,
+    }
   ],
 }
