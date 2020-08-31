@@ -1,3 +1,0 @@
-<FilesMatch "\.(html|json)$">
-Header set Cache-Control "public, max-age=0, must-revalidate"
-</FilesMatch>
