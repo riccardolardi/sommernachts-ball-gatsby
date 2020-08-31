@@ -55,6 +55,12 @@ module.exports = {
         fieldName: `wpgraphql`,
         url: `${process.env.WP_BASE_URL}/graphql`
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-16856648-8",
+      },
+    },
   ],
 }
