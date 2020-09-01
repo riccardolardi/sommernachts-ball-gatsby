@@ -121,7 +121,7 @@ const IndexPage = () => {
   `)
 
   return <Layout>
-    <SEO lang="de" title="Willkommen!" />
+    <SEO lang="de" />
     <App data={data} />
   </Layout>
 }

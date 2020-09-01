@@ -4,7 +4,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import ogImage from "../images/og.png"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta }) {
   const { wpgraphql, site } = useStaticQuery(
     graphql`
       query {
@@ -23,6 +23,7 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+  const title = wpgraphql.generalSettings.title
   const metaDescription = wpgraphql.generalSettings.description
 
   return (
@@ -30,7 +31,7 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={`${wpgraphql.generalSettings.title}`}
+      title={`${title}`}
       titleTemplate={`%s ${title ? '| ' + title : ''}`}
       meta={[
         {
