@@ -369,6 +369,9 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(contactData.text)}} />
 		    	<br/></React.Fragment>}
+		    	<h3>Impressum:</h3><br/>
+		    	<p>Design: <a className="link" href="http://www.komun.ch" target="_blank" rel="noopener noreferrer">Komun</a>, <a className="link" href="http://www.stephanwalter.ch" target="_blank" rel="noopener noreferrer">Stephan Walter</a></p>
+		    	<p>Code: <a className="link" href="http://www.riccardolardi.com" target="_blank" rel="noopener noreferrer">Studio Riccardo Lardi</a></p>
 	    	</div>
 				{props.wp === 8 && <ExtraBalls wp={props.wp} />}
 			</article>}
