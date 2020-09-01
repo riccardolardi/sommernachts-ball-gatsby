@@ -29,13 +29,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Sommernachts-Ball`,
+        short_name: `SNB`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
       },
     },
     {
