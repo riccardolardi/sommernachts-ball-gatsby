@@ -31,8 +31,8 @@ jobs:
         # local-dir: public
       uses: kevinpainchaud/simple-ftp-deploy-action@v1.1.0
       with:
-        ftp_host: s080.cyon.net
-        ftp_username: sommern2
+        ftp_host: ${{ secrets.FTP_HOST }}
+        ftp_username: ${{ secrets.FTP_USER }}
         ftp_password: ${{ secrets.FTP_PASSWORD }}
         local_source_dir: "public"
         dist_target_dir: "/public_html/2020-gatsby"
