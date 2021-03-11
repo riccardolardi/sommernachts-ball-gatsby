@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout prod
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
       with:
+        node-version: '14'
         ref: prod
         persist-credentials: false
     - run: ls -la
