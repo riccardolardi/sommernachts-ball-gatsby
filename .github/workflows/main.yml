@@ -21,10 +21,13 @@ jobs:
         ref: prod
         persist-credentials: false
     - run: ls -la
-    - name: Build gatsby
-      uses: jzweifel/gatsby-cli-github-action@master
-      with:
-        gatsby-arg: build
+    - name: NPM Install
+      run: npm install
+    - name: Gatsby Build
+      run: npm run build
+      # uses: jzweifel/gatsby-cli-github-action@master
+      # with:
+        # gatsby-arg: build
     - run: ls -la public
     - name: FTP deploy
       # uses: SamKirkland/FTP-Deploy-Action@3.1.1
