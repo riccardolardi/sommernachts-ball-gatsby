@@ -30,12 +30,12 @@ jobs:
         # gatsby-arg: build
     - run: ls -la public
     - name: FTP deploy
-      # uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      # with:
-        # ftp-server: s080.cyon.net/public_html/2020-gatsby
-        # ftp-username: sommern2
-        # ftp-password: ${{ secrets.FTP_PASSWORD }}
-        # local-dir: public
+      # uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      # with:
+        # ftp-server: s080.cyon.net/public_html/2020-gatsby
+        # ftp-username: sommern2
+        # ftp-password: ${{ secrets.FTP_PASSWORD }}
+        # local-dir: public
       uses: kevinpainchaud/simple-ftp-deploy-action@v1.1.0
       with:
         ftp_host: ${{ secrets.FTP_HOST }}
