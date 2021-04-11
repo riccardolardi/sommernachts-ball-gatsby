@@ -1,5 +1,5 @@
 import React from "react"
-import ExtraBalls from "./extraballs"
+// import ExtraBalls from "./extraballs"
 import { useScroll } from "react-use"
 import { LazyLoadImage, LazyLoadComponent } from "react-lazy-load-image-component"
 import remark from "remark"
@@ -34,7 +34,7 @@ const closeSrc = require('../assets/close.svg')
 const Main = (props) => {
 
 	const newsData = 
-		props.data.wpgraphql.news.nodes.find(el => el.acfNews.online)?.acfNews
+		props.data.wpgraphql.newsItems.nodes.find(el => el.acfNews.online)?.acfNews
 	const infoData = 
 		props.data.wpgraphql.infos.nodes.find(el => el.acfInfo.online)?.acfInfo
 	const lineupData = 
@@ -188,16 +188,16 @@ const Main = (props) => {
 			    <div className="text-logo" style={props.wp === 2 ? logo2style : null}>
 			      <div className="row">
 			        <span className="left"></span>
-			        <span className="right">Unser</span>
+			        <span className="right">Überall</span>
 			      </div>
-			      <div className="row">
+						{/*<div className="row">
 			        <span className="left"></span>
 			        <span className="right">Ball</span>
 			      </div>
 			      <div className="row">
 			        <span className="left"></span>
 			        <span className="right">Für alle</span>
-			      </div>
+			      </div>*/}
 			    </div>
 			  </div>
 			</article>
@@ -210,7 +210,7 @@ const Main = (props) => {
 		    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
 		    	<br/></React.Fragment>}
 	    	</div>
-	    	{props.wp === 3 && <ExtraBalls wp={props.wp} />}
+	    	{/*{props.wp === 3 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			{infoData && <article id="info" data-wp="4" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 4 ? 'active' : 'inactive'}`}>
@@ -220,7 +220,7 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(infoData.text)}} />
 		    	<br/></React.Fragment>}
-					<h3>Partner</h3>
+					{/*<h3>Partner</h3>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.shopville.ch/"><img src={props.inverted ? shopvilleSrcB : shopvilleSrcW} alt="ShopVille" /></a>
@@ -230,9 +230,9 @@ const Main = (props) => {
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.zurich.ch/"><img src={props.inverted ? zurichSrcB : zurichSrcW} alt="Stadt Zurich" /></a>
 					<br/><br/>
 					<h3>Medienpartner</h3>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>*/}
 				</div>
-				{props.wp === 4 && <ExtraBalls wp={props.wp} />}
+				{/*{props.wp === 4 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			{lineupData && <article id="lineup" data-wp="5" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 5 ? 'active' : 'inactive'}`}>
@@ -288,7 +288,7 @@ const Main = (props) => {
 						})}
 					</div>
 				</div>
-				{props.wp === 5 && <ExtraBalls wp={props.wp} />}
+				{/*{props.wp === 5 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			{galleryData && <article id="gallery" data-wp="6" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 6 ? 'active' : 'inactive'}`}>
@@ -338,7 +338,7 @@ const Main = (props) => {
 						</div>}
 					</div>
 				</div>
-				{props.wp === 6 && <ExtraBalls wp={props.wp} />}
+				{/*{props.wp === 6 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			{newsletterData && <article id="newsletter" data-wp="7" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 7 ? 'active' : 'inactive'}`}>
@@ -359,7 +359,7 @@ const Main = (props) => {
 					</div>}
 					{registeringNewsletter && <p>Bitte warten...</p>}
 				</div>
-				{props.wp === 7 && <ExtraBalls wp={props.wp} />}
+				{/*{props.wp === 7 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			{contactData && <article id="kontakt" data-wp="8" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 8 ? 'active' : 'inactive'}`}>
@@ -373,7 +373,7 @@ const Main = (props) => {
 		    	<p>Design: <a className="link" href="http://www.komun.ch" target="_blank" rel="noopener noreferrer">Komun</a>, <a className="link" href="http://www.stephanwalter.ch" target="_blank" rel="noopener noreferrer">Stephan Walter</a></p>
 		    	<p>Code: <a className="link" href="http://www.riccardolardi.com" target="_blank" rel="noopener noreferrer">Studio Riccardo Lardi</a></p>
 	    	</div>
-				{props.wp === 8 && <ExtraBalls wp={props.wp} />}
+				{/*{props.wp === 8 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
 			<article data-wp="9" ref={el => articleRef.current[8] = el} 
 				className={`${props.wp === 9 ? 'active' : 'inactive'} intro`}>
