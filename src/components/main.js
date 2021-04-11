@@ -204,7 +204,7 @@ const Main = (props) => {
 			{newsData && <article id="home" data-wp="3" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 3 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: newsData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(newsData.title)}} />
 		    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
@@ -215,7 +215,7 @@ const Main = (props) => {
 			{infoData && <article id="info" data-wp="4" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 4 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: infoData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(infoData.title)}} />
 		    	{infoData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: infoData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(infoData.text)}} />
@@ -237,7 +237,7 @@ const Main = (props) => {
 			{lineupData && <article id="lineup" data-wp="5" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 5 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: lineupData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(lineupData.title)}} />
 		    	{lineupData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: lineupData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{lineupData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(lineupData.text)}} />
@@ -293,7 +293,7 @@ const Main = (props) => {
 			{galleryData && <article id="gallery" data-wp="6" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 6 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: galleryData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(galleryData.title)}} />
 		    	{galleryData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: galleryData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{galleryData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(galleryData.text)}} />
@@ -343,7 +343,7 @@ const Main = (props) => {
 			{newsletterData && <article id="newsletter" data-wp="7" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 7 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: newsletterData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(newsletterData.title)}} />
 		    	{newsletterData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsletterData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{newsletterData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsletterData.text)}} />
@@ -364,7 +364,7 @@ const Main = (props) => {
 			{contactData && <article id="kontakt" data-wp="8" ref={el => articleRef.current.push(el)} 
 				className={`${props.wp === 8 ? 'active' : 'inactive'}`}>
 				<div className="content">
-		    	<h1 dangerouslySetInnerHTML={{__html: contactData.title}} />
+		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(contactData.title)}} />
 		    	{contactData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: contactData.subtitle}} />
 		    	<br/></React.Fragment>}
 		    	{contactData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(contactData.text)}} />
