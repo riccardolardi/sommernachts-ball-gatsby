@@ -3,17 +3,17 @@ import "../styles/navi.scss"
 
 const Navi = (props) => {
   const newsData = 
-    props.data.wpgraphql.news.nodes.find(el => el.acfNews.online)?.acfNews
+    props.data.wpgraphql.newsItems.nodes.find(el => el.acfNews.online)
   const infoData = 
-    props.data.wpgraphql.infos.nodes.find(el => el.acfInfo.online)?.acfInfo
+    props.data.wpgraphql.infos.nodes.find(el => el.acfInfo.online)
   const lineupData = 
-    props.data.wpgraphql.lineups.nodes.find(el => el.acfLineup.online)?.acfLineup
+    props.data.wpgraphql.lineups.nodes.find(el => el.acfLineup.online)
   const galleryData = 
-    props.data.wpgraphql.galleries.nodes.find(el => el.acfGallery.online)?.acfGallery
+    props.data.wpgraphql.galleries.nodes.find(el => el.acfGallery.online)
   const newsletterData = 
-    props.data.wpgraphql.newsletters.nodes.find(el => el.acfNewsletter.online)?.acfNewsletter
+    props.data.wpgraphql.newsletters.nodes.find(el => el.acfNewsletter.online)
   const contactData = 
-    props.data.wpgraphql.contacts.nodes.find(el => el.acfContact.online)?.acfContact
+    props.data.wpgraphql.contacts.nodes.find(el => el.acfContact.online)
   return (
     <nav id="navi" onWheel={props.onExtraWheel} 
     	className={`${!props.isIntro && !props.isMobile || props.mobileNavOpen ? 'show' : 'hide'}`}>

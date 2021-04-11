@@ -13,7 +13,7 @@ const IndexPage = () => {
         generalSettings {
           title
         }
-		    news {
+		    newsItems {
 		      nodes {
 		        id
 		        title

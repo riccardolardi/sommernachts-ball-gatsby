@@ -19,7 +19,7 @@ const logoSrcW = require('../assets/migros_w.svg')
 
 const App = (props) => {
 
-  const newsData = props.data.wpgraphql.news.nodes[0]
+  const newsData = props.data.wpgraphql.newsItems.nodes[0]
   const infoData = props.data.wpgraphql.infos.nodes[0]
   const lineupData = props.data.wpgraphql.lineups.nodes[0]
   const galleryData = props.data.wpgraphql.galleries.nodes[0]
@@ -29,12 +29,12 @@ const App = (props) => {
 	const [wp, setWp] = React.useState(null)
 	const [prevWp, setPrevWp] = React.useState(null)
 	const [isIntro, setIsIntro] = React.useState(false)
-	const [inverted, setInverted] = React.useState(false)
+	const [inverted, setInverted] = React.useState(true)
 	const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
 	const isMobile = useBreakpoint() === 'mobile'
 
 	React.useEffect(() => {
-		setInverted(wp > 2 && wp < 9)
+		// setInverted(wp > 2 && wp < 9)
 		setMobileNavOpen(false)
 		setIsIntro(wp <= 2 || wp === 9)
 	}, [wp])
@@ -80,20 +80,20 @@ const App = (props) => {
 	      <p>Mehr Informationen darüber wieso man keine veralteten Browser benutzen sollte: <a href="https://www.browser-update.org/de/update.html">hier klicken</a></p>
     	</React.Fragment> : 
     	<React.Fragment>
-		    <Three show={isIntro || mobileNavOpen} />
+		    {/*<Three show={isIntro || mobileNavOpen} />*/}
 		    <header className={`text-logo front 
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
 		        <span className="left suffix-slash">Sommer</span>
-		        {/*<span className="right">Abgesagt</span>*/}
+		        <span className="right">26.6</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Nachts</span>
-		        {/*<span className="right">Aufgrund</span>*/}
+		        <span className="right">2021</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Ball</span>
-		        {/*<span className="right">Coronavirus</span>*/}
+		        <span className="right">Überall</span>
 		      </div>
 		    </header>
 		    <img src={logoSrcW} className={`migros-logo blend ${wp < 3 || 
