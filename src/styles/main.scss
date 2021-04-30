@@ -36,6 +36,10 @@ main#main {
 			opacity: 1;
 			pointer-events: auto;
 
+			.migros-link {
+				pointer-events: auto;
+			}
+
 			.content {
 				opacity: 1;
 				transition: opacity 250ms 125ms;
@@ -109,7 +113,7 @@ main#main {
 
 		.partner {
 			display: inline-block;
-			margin-right: 2vmax;
+			margin: 0.4em 0.6em 0 0;
 
 			@include breakpoint($breakMobile) {
 				display: block;
@@ -118,7 +122,7 @@ main#main {
 
 			img {
 				display: block;
-				height: 2vmax;
+				height: 3vmax;
 
 				@include breakpoint($breakMobile) {
 					height: 4vmax;
