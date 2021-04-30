@@ -30,6 +30,7 @@ const logoSrcW = require('../assets/migros_w.svg')
 const scrollDownSrc = require('../assets/scroll-down.svg')
 const menuSrc = require('../assets/menu.svg')
 const closeSrc = require('../assets/close.svg')
+const swissdanceSrc = require('../assets/swissdance.png')
 
 const Main = (props) => {
 
@@ -231,6 +232,9 @@ const Main = (props) => {
 					<br/><br/>
 					<h3>Medienpartner</h3>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>*/}
+					<h3>Partner</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="https://swissdance.ch/"><img src={swissdanceSrc} alt="SBB" /></a>
 				</div>
 				{/*{props.wp === 4 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
@@ -378,7 +382,9 @@ const Main = (props) => {
 			<article data-wp="9" ref={el => articleRef.current[8] = el} 
 				className={`${props.wp === 9 ? 'active' : 'inactive'} intro`}>
 				<div className="centerWrap">
-					<img src={props.inverted ? logoSrcB : logoSrcW} className='migros-logo' alt="Migros Kulturprozent" />
+					<a href="https://migros-engagement.ch/engagement" target="_blank" rel="noopener noreferrer" className="migros-link">
+						<img src={props.inverted ? logoSrcB : logoSrcW} className='migros-logo' alt="Migros Kulturprozent" />
+					</a>
 				</div>
 			</article>
 			<span className={`scroll-indicator ${props.mobileNavOpen ? 'mobile-nav-open blend' : ''} 

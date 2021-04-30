@@ -2,6 +2,7 @@ import React from "react"
 import Classnames from "classnames"
 import { createBreakpoint } from "react-use"
 import { isIE, isSafari, isMobile as isTouch } from "react-device-detect"
+import InstagramIcon from "@material-ui/icons/Instagram"
 import easyScroll from "easy-scroll"
 import Three from "./three"
 import Main from "./main"
@@ -95,10 +96,17 @@ const App = (props) => {
 		        <span className="left suffix-slash">Ball</span>
 		        <span className="right">Überall</span>
 		      </div>
+		      <div className="row instagram-link">
+		      	<a href="https://www.instagram.com/sommernachtsballzuerich" target="_blank" rel="noopener noreferrer">
+		      		<InstagramIcon className="icon" />
+		      	</a>
+		      </div>
 		    </header>
-		    <img src={logoSrcW} className={`migros-logo blend ${wp < 3 || 
-		    		mobileNavOpen ? 'show' : 'hide'}`} 
-		    			alt="Migros Kulturprozent" />
+		    <a href="https://migros-engagement.ch/engagement" target="_blank" rel="noopener noreferrer" 
+		    	className={`migros-logo migros-link blend ${wp < 3 || 
+			    mobileNavOpen ? 'show' : 'hide'}`}>
+			    <img src={logoSrcW} alt="Migros Kulturprozent" />
+		    </a>
 		    <Main 
 		    	data={props.data} 
 		    	wp={wp} 
