@@ -232,9 +232,6 @@ const Main = (props) => {
 					<br/><br/>
 					<h3>Medienpartner</h3>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>*/}
-					<h3>Partner</h3>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="https://swissdance.ch/"><img src={swissdanceSrc} alt="SBB" /></a>
 				</div>
 				{/*{props.wp === 4 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
@@ -376,6 +373,11 @@ const Main = (props) => {
 		    	<h3>Impressum:</h3><br/>
 		    	<p>Design: <a className="link" href="http://www.komun.ch" target="_blank" rel="noopener noreferrer">Komun</a>, <a className="link" href="http://www.stephanwalter.ch" target="_blank" rel="noopener noreferrer">Stephan Walter</a></p>
 		    	<p>Code: <a className="link" href="http://www.riccardolardi.com" target="_blank" rel="noopener noreferrer">Studio Riccardo Lardi</a></p>
+	    		<br/>
+	    		<h3>Partner</h3>
+	    		<br/>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="https://swissdance.ch/"><img src={swissdanceSrc} alt="SBB" /></a>
 	    	</div>
 				{/*{props.wp === 8 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
