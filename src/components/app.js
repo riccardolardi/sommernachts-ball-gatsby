@@ -86,7 +86,7 @@ const App = (props) => {
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
 		        <span className="left suffix-slash">Sommer</span>
-		        <span className="right">26.6</span>
+		        <span className="right">28.8.</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Nachts</span>
@@ -108,27 +108,27 @@ const App = (props) => {
 			    <img src={logoSrcW} alt="Migros Kulturprozent" />
 		    </a>
 		    <Main 
-		    	data={props.data} 
-		    	wp={wp} 
-		    	setWp={setWp} 
-		    	prevWp={prevWp} 
-		    	setPrevWp={setPrevWp} 
-		    	jumpTo={jumpTo} 
-		    	inverted={inverted} 
-		    	isIntro={isIntro} 
-		    	isMobile={isMobile} 
-		    	isTouch={isTouch} 
-		    	mobileNavOpen={mobileNavOpen} 
-		    	setMobileNavOpen={setMobileNavOpen} 
+		    	data={props.data}
+		    	wp={wp}
+		    	setWp={setWp}
+		    	prevWp={prevWp}
+		    	setPrevWp={setPrevWp}
+		    	jumpTo={jumpTo}
+		    	inverted={inverted}
+		    	isIntro={isIntro}
+		    	isMobile={isMobile}
+		    	isTouch={isTouch}
+		    	mobileNavOpen={mobileNavOpen}
+		    	setMobileNavOpen={setMobileNavOpen}
 		    	onExtraWheel={onExtraWheel}
 		    />
 		    <Navi 
-		    	data={props.data} 
-					wp={wp} 
-					jumpTo={jumpTo} 
-					isIntro={isIntro} 
-					isMobile={isMobile} 
-					mobileNavOpen={mobileNavOpen} 
+		    	data={props.data}
+					wp={wp}
+					jumpTo={jumpTo}
+					isIntro={isIntro}
+					isMobile={isMobile}
+					mobileNavOpen={mobileNavOpen}
 					onExtraWheel={onExtraWheel}
 		    />
 	    </React.Fragment>}
