@@ -318,6 +318,13 @@ main#main {
 		}
 	}
 
+	.satellite {
+		margin: 0.6em 0 0;
+		a {
+			text-decoration: underline;
+		}
+	}
+
 	.scroll-indicator {
 		display: block;
 		position: fixed;

@@ -221,6 +221,19 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{infoData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(infoData.text)}} />
 		    	<br/></React.Fragment>}
+		    	<h3>Satellitenbälle</h3>
+	    		{
+	    			infoData.satellites.map((satellite) => {
+	    				return <div className="satellite">
+	    					<h4>
+		    					<a target="_blank" rel="noopener noreferrer" href={satellite.satelliteLink}>
+		    						{satellite.satelliteTitle}
+		    					</a>
+	    					</h4>
+			    			<p>{satellite.satelliteDescription}</p>
+			    		</div>
+	    			})
+	    		}
 					{/*<h3>Partner</h3>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
 					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
