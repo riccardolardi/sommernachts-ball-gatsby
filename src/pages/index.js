@@ -34,6 +34,11 @@ const IndexPage = () => {
 		          subtitle
 		          text
 		          title
+			        satellites {
+			          satelliteTitle
+			          satelliteDescription
+			          satelliteLink
+			        }
 		        }
 		      }
 		    }
