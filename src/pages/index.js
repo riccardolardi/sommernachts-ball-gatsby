@@ -22,6 +22,8 @@ const IndexPage = () => {
 		          subtitle
 		          text
 		          title
+		          streamlive
+		          streamtext
 		        }
 		      }
 		    }

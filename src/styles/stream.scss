@@ -1,0 +1,15 @@
+@import 'breakpoint-sass';
+@import 'vars.scss';
+
+.stream {
+  display: grid;
+  grid-template-columns: 66.66% 33.33%;
+  @include breakpoint($breakMobile) {
+    display: block;
+  }
+  .chat {
+    @include breakpoint($breakMobile) {
+      height: 66.666vh;
+    }
+  }
+}

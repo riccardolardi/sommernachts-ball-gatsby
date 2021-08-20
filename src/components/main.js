@@ -1,5 +1,6 @@
 import React from "react"
 // import ExtraBalls from "./extraballs"
+import Stream from "./stream"
 import { useScroll } from "react-use"
 import { LazyLoadImage, LazyLoadComponent } from "react-lazy-load-image-component"
 import remark from "remark"
@@ -31,6 +32,11 @@ const scrollDownSrc = require('../assets/scroll-down.svg')
 const menuSrc = require('../assets/menu.svg')
 const closeSrc = require('../assets/close.svg')
 const swissdanceSrc = require('../assets/swissdance.png')
+
+const isSSR = typeof window === "undefined"
+const ClientSideOnlyLazyStream = React.lazy(() =>
+  import("./stream")
+)
 
 const Main = (props) => {
 
@@ -208,8 +214,13 @@ const Main = (props) => {
 		    	<h1 dangerouslySetInnerHTML={{__html: Hyphenate(newsData.title)}} />
 		    	{newsData.subtitle && <React.Fragment><h2 dangerouslySetInnerHTML={{__html: newsData.subtitle}} />
 		    	<br/></React.Fragment>}
-		    	{newsData.text && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
+		    	{newsData.text && !newsData.streamlive && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
 		    	<br/></React.Fragment>}
+		      {!isSSR && newsData.streamlive && (
+		        <React.Suspense fallback={<div />}>
+		          <ClientSideOnlyLazyStream />
+		        </React.Suspense>
+		      )}
 	    	</div>
 	    	{/*{props.wp === 3 && <ExtraBalls wp={props.wp} />}*/}
 			</article>}
@@ -224,7 +235,7 @@ const Main = (props) => {
 		    	<h3>Satellitenbälle</h3>
 	    		{
 	    			infoData.satellites.map((satellite) => {
-	    				return <div className="satellite">
+	    				return <div className="satellite" key={satellite.satelliteTitle}>
 	    					<h4>
 		    					<a target="_blank" rel="noopener noreferrer" href={satellite.satelliteLink}>
 		    						{satellite.satelliteTitle}
