@@ -33,9 +33,10 @@ const App = (props) => {
 	const [inverted, setInverted] = React.useState(true)
 	const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
 	const isMobile = useBreakpoint() === 'mobile'
+	const isSSR = typeof window === "undefined"
 
 	React.useEffect(() => {
-		// setInverted(wp > 2 && wp < 9)
+		setInverted(wp > 2 && wp < 9)
 		setMobileNavOpen(false)
 		setIsIntro(wp <= 2 || wp === 9)
 	}, [wp])
@@ -81,7 +82,7 @@ const App = (props) => {
 	      <p>Mehr Informationen darüber wieso man keine veralteten Browser benutzen sollte: <a href="https://www.browser-update.org/de/update.html">hier klicken</a></p>
     	</React.Fragment> : 
     	<React.Fragment>
-		    {/*<Three show={isIntro || mobileNavOpen} />*/}
+		    <Three show={isIntro || mobileNavOpen} />
 		    <header className={`text-logo front 
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
