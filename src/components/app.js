@@ -87,7 +87,7 @@ const App = (props) => {
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
 		        <span className="left suffix-slash">Sommer</span>
-		        <span className="right">25.</span>
+		        <span className="right">27.</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Nachts</span>
@@ -95,7 +95,7 @@ const App = (props) => {
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Ball</span>
-		        <span className="right">2022</span>
+		        <span className="right">2021</span>
 		      </div>
 		      <div className="row instagram-link">
 		      	<a href="https://www.instagram.com/sommernachtsballzuerich" target="_blank" rel="noopener noreferrer">
