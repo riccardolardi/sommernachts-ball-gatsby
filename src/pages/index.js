@@ -24,6 +24,7 @@ const IndexPage = () => {
 		          title
 		          streamlive
 		          streamtext
+		          streamarchivevideo
 		        }
 		      }
 		    }

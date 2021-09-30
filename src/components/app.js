@@ -86,15 +86,15 @@ const App = (props) => {
 		    	${!isIntro && !isMobile || mobileNavOpen ? 'show' : 'hide'}`}>
 		      <div className="row">
 		        <span className="left suffix-slash">Sommer</span>
-		        <span className="right">28.8.</span>
+		        <span className="right">25.</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Nachts</span>
-		        <span className="right">2021</span>
+		        <span className="right">Juni</span>
 		      </div>
 		      <div className="row">
 		        <span className="left suffix-slash">Ball</span>
-		        <span className="right">Überall</span>
+		        <span className="right">2022</span>
 		      </div>
 		      <div className="row instagram-link">
 		      	<a href="https://www.instagram.com/sommernachtsballzuerich" target="_blank" rel="noopener noreferrer">

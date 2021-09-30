@@ -19,9 +19,10 @@ const Stream = React.memo(function Stream(props) {
         }}
       >
         <iframe
-          src="https://vimeo.com/event/1176343/embed"
+          src={props.streamLive ? 'https://vimeo.com/event/1176343/embed' : props.archiveVideo}
+          title="YouTube video player"
           frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           style={{
             position: 'absolute',
@@ -32,14 +33,14 @@ const Stream = React.memo(function Stream(props) {
           }}>
         </iframe>
       </div>
-      <div className="chat">
+      {props.streamLive && <div className="chat">
         <iframe
           src="https://vimeo.com/event/1176343/chat/"
           width="100%"
           height="100%"
           frameBorder="0"
         ></iframe>
-      </div>
+      </div>}
     </div>
   )
 })

@@ -195,16 +195,16 @@ const Main = (props) => {
 			    <div className="text-logo" style={props.wp === 2 ? logo2style : null}>
 			      <div className="row">
 			        <span className="left"></span>
-			        <span className="right">Überall</span>
+			        <span className="right">Unser</span>
 			      </div>
-						{/*<div className="row">
+						<div className="row">
 			        <span className="left"></span>
 			        <span className="right">Ball</span>
 			      </div>
 			      <div className="row">
 			        <span className="left"></span>
 			        <span className="right">Für alle</span>
-			      </div>*/}
+			      </div>
 			    </div>
 			  </div>
 			</article>
@@ -216,9 +216,9 @@ const Main = (props) => {
 		    	<br/></React.Fragment>}
 		    	{newsData.text && !newsData.streamlive && <React.Fragment><p dangerouslySetInnerHTML={{__html: Hyphenate(newsData.text)}} />
 		    	<br/></React.Fragment>}
-		      {!isSSR && newsData.streamlive && (
+		      {!isSSR && (newsData.streamlive || newsData.streamarchivevideo) && (
 		        <React.Suspense fallback={<div />}>
-		          <ClientSideOnlyLazyStream />
+		          <ClientSideOnlyLazyStream streamLive={newsData.streamlive} archiveVideo={newsData.streamarchivevideo} />
 		        </React.Suspense>
 		      )}
 	    	</div>
