@@ -1,9 +1,9 @@
-@import 'breakpoint-sass';
-@import 'vars.scss';
+@import "breakpoint-sass";
+@import "vars.scss";
 
 #layout {
-	font-family: 'Moneta', Times, serif;
-	font-size: $pad;
-	line-height: $pad;
+	font-family: "Moneta", Times, serif;
+	font-size: $pad * 0.75;
+	line-height: $pad * 0.75;
 	letter-spacing: 0.02em;
 }

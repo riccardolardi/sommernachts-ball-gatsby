@@ -4,10 +4,10 @@ import { createBreakpoint } from "react-use"
 import { isIE, isSafari, isMobile as isTouch } from "react-device-detect"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import easyScroll from "easy-scroll"
-import Three from "./three"
+// import Three from "./three"
 import Main from "./main"
 import Navi from "./navi"
-import logoSrcB from "../assets/migros_b.svg"
+// import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
 import "../styles/app.scss"
 
@@ -18,17 +18,10 @@ const useBreakpoint = createBreakpoint({
 })
 
 const App = (props) => {
-	const newsData = props.data.wpgraphql.newsItems.nodes[0]
-	const infoData = props.data.wpgraphql.infos.nodes[0]
-	const lineupData = props.data.wpgraphql.lineups.nodes[0]
-	const galleryData = props.data.wpgraphql.galleries.nodes[0]
-	const newsletterData = props.data.wpgraphql.newsletters.nodes[0]
-	const contactData = props.data.wpgraphql.contacts.nodes[0]
-
 	const [wp, setWp] = React.useState(null)
 	const [prevWp, setPrevWp] = React.useState(null)
 	const [isIntro, setIsIntro] = React.useState(false)
-	const [inverted, setInverted] = React.useState(true)
+	const [inverted] = React.useState(true)
 	const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
 	const isMobile = useBreakpoint() === "mobile"
 

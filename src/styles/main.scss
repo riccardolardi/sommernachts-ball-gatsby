@@ -1,6 +1,6 @@
-@import 'breakpoint-sass';
-@import 'mixins.scss';
-@import 'vars.scss';
+@import "breakpoint-sass";
+@import "mixins.scss";
+@import "vars.scss";
 
 main#main {
 	position: relative;
@@ -55,39 +55,30 @@ main#main {
 		}
 
 		&[data-wp="1"] {
-			
 		}
 
 		&[data-wp="2"] {
-
 		}
 
 		&[data-wp="3"] {
-			
 		}
 
 		&[data-wp="4"] {
-			
 		}
 
 		&[data-wp="5"] {
-			
 		}
 
 		&[data-wp="6"] {
-			
 		}
 
 		&[data-wp="7"] {
-			
 		}
 
 		&[data-wp="8"] {
-			
 		}
 
 		&[data-wp="9"] {
-			
 		}
 
 		.content {
@@ -117,7 +108,7 @@ main#main {
 
 			@include breakpoint($breakMobile) {
 				display: block;
-				margin-top: $pad / 2;
+				margin-top: $pad * 0.5;
 			}
 
 			img {
@@ -131,7 +122,7 @@ main#main {
 		}
 
 		.artist-info {
-			margin-bottom: $pad / 2;
+			margin-bottom: $pad * 0.5;
 
 			h2.link {
 				display: inline-block;
@@ -157,21 +148,25 @@ main#main {
 				}
 
 				.artist-text {
-					padding: $pad / 2 0 0;
+					padding: $pad * 0.5 0 0;
+
+					a {
+						display: block;
+					}
 
 					p + p {
-						margin-top: $pad / 3;
+						margin-top: $pad * 0.33;
 					}
 
 					.icon {
-						margin-top: $pad / 3;
+						margin-top: $pad * 0.33;
 					}
 				}
 
 				.artist-media {
 					float: right;
 					width: 33%;
-					margin-left: $pad / 2;
+					margin-left: $pad * 0.5;
 
 					@include breakpoint($breakMobile) {
 						width: auto;
@@ -180,12 +175,12 @@ main#main {
 					}
 				}
 
-				.artist-photo, 
+				.artist-photo,
 				.artist-video {
 					max-width: 100%;
 					width: 100%;
 					height: 100%;
-					margin: 1vmax 0 $pad / 2;
+					margin: 1vmax 0 $pad * 0.5;
 
 					@include breakpoint($breakMobile) {
 						&:first-child {
@@ -200,7 +195,7 @@ main#main {
 			position: relative;
 			padding: 56.25% 0 0;
 
-			&+.video {
+			& + .video {
 				margin-top: $pad;
 			}
 
@@ -226,19 +221,20 @@ main#main {
 
 		.gallery-photo {
 			display: block;
-			margin-top: $pad / 2;
+			margin-top: $pad * 0.5;
 			width: 50% !important;
 			height: 100% !important;
 
 			&:nth-child(even) {
-				padding-left: $pad / 4;
+				padding-left: $pad * 0.25;
 			}
 
 			&:nth-child(odd) {
-				padding-right: $pad / 4;
+				padding-right: $pad * 0.25;
 			}
 
-			&:nth-child(1), &:nth-child(2) {
+			&:nth-child(1),
+			&:nth-child(2) {
 				margin-top: 0;
 			}
 
@@ -250,7 +246,6 @@ main#main {
 		}
 
 		.newsletter-form {
-
 			label {
 				display: block;
 				margin-bottom: $pad;
@@ -262,15 +257,15 @@ main#main {
 				border-radius: 0px;
 				background-color: transparent;
 				color: white;
-				font-family: 'Moneta';
+				font-family: "Moneta";
 				font-size: $pad;
 				letter-spacing: 0.02em;
 				padding: 0.4vmax;
 				max-width: 100%;
 
 				&::placeholder {
-				  color: white;
-				  opacity: 1;
+					color: white;
+					opacity: 1;
 				}
 			}
 
@@ -280,24 +275,23 @@ main#main {
 				border-radius: 0px;
 				background-color: white;
 				color: black;
-				font-family: 'Moneta';
+				font-family: "Moneta";
 				font-size: $pad;
 				line-height: $pad;
 				letter-spacing: 0.02em;
 				padding: 0.8vmax 0.4vmax;
-				margin-top: $pad / 2;
+				margin-top: $pad * 0.5;
 				max-width: 100%;
 			}
 
 			&.inverted {
-
 				input {
 					border: 0.2vmax solid black;
 					color: black;
 
 					&::placeholder {
-					  color: black;
-					  opacity: 1;
+						color: black;
+						opacity: 1;
 					}
 				}
 
@@ -371,7 +365,7 @@ main#main {
 				transform: rotateY(90deg);
 				transition: transform 125ms 0ms, visibility 125ms 0ms;
 			}
-			
+
 			.scroll-indicator-content.close {
 				visibility: visible;
 				transform: rotateY(0deg);
@@ -380,9 +374,7 @@ main#main {
 		}
 
 		&.is-scroll {
-
 			@include breakpoint($breakMobile) {
-
 				.scroll-indicator-content.scroll {
 					visibility: visible;
 					transform: rotateY(0deg);
@@ -399,7 +391,6 @@ main#main {
 		}
 
 		&.is-menu {
-
 			@include breakpoint($breakMobile) {
 				background-color: black;
 
@@ -472,6 +463,15 @@ main#main {
 				height: 30%;
 				transform: rotateY(90deg);
 				transition: transform 125ms 0ms, visibility 125ms 0ms;
+			}
+		}
+	}
+
+	.schedule {
+		ul {
+			margin: $pad * 0.5 0;
+			li {
+				margin: $pad * 0.25 0;
 			}
 		}
 	}

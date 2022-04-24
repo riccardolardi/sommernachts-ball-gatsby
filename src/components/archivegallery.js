@@ -120,10 +120,13 @@ const ArchiveGallery = (props) => {
 						return (
 							<span
 								key={index}
+								role="button"
+								tabIndex="0"
 								className={`gallery-link link ${
 									activeGalleryIndex === index ? "active" : ""
 								}`}
 								onClick={() => onGalleryLinkClick(index)}
+								onKeyPress={() => null}
 							>
 								{el.title}
 							</span>
@@ -157,6 +160,7 @@ const ArchiveGallery = (props) => {
 											</span>
 										</LazyLoadComponent>
 									)
+								return null
 							}
 						)}
 					</article>

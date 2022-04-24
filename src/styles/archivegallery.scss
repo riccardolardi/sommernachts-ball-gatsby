@@ -1,5 +1,5 @@
-@import 'breakpoint-sass';
-@import 'vars.scss';
+@import "breakpoint-sass";
+@import "vars.scss";
 
 #archive-gallery {
 	position: relative;
@@ -9,25 +9,25 @@
 	height: 100%;
 	min-height: 100vh;
 
-  h1 {
-  	font-size: $pad * 2;
-  	line-height: $pad * 2;
-  }
+	h1 {
+		font-size: $pad * 2;
+		line-height: $pad * 2;
+	}
 
-  a {
-  	color: inherit;
-  	text-decoration: none;
-  }
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 
-  p {
-  	hyphens: manual;
-  }
+	p {
+		hyphens: manual;
+	}
 
-  .link {
-  	overflow-wrap: break-word;
-  	text-decoration: underline;
-  	cursor: pointer;
-  }
+	.link {
+		overflow-wrap: break-word;
+		text-decoration: underline;
+		cursor: pointer;
+	}
 
 	.text-logo {
 		display: inline-block;
@@ -37,8 +37,8 @@
 		pointer-events: none;
 
 		@include breakpoint($breakMobile) {
-	  	font-size: 5.6vmax;
-	  	line-height: 7.2vmax;
+			font-size: 5.6vmax;
+			line-height: 7.2vmax;
 		}
 
 		.row {
@@ -55,18 +55,18 @@
 		width: 30vmin;
 		pointer-events: none;
 
-  	@include breakpoint($breakMobile) {
-  		top: 4vh;
-  	}
+		@include breakpoint($breakMobile) {
+			top: 4vh;
+		}
 	}
 
 	main {
 		padding: 33.333vh 4vmin 0;
 
 		@include breakpoint($breakMobile) {
-	  	font-size: 5.6vmax;
-	  	line-height: 7.2vmax;
-	  	left: 6vmin;
+			font-size: 5.6vmax;
+			line-height: 7.2vmax;
+			left: 6vmin;
 		}
 
 		.gallery-sticky-top {
@@ -77,7 +77,7 @@
 
 		.gallery-link {
 			display: inline-block;
-			margin-right: $pad / 4;
+			margin-right: $pad * 0.25;
 			cursor: pointer;
 
 			&.active {
@@ -106,7 +106,7 @@
 			span {
 				width: 32% !important;
 				height: auto !important;
-				margin-bottom: $pad / 2;
+				margin-bottom: $pad * 0.5;
 				opacity: 0;
 				transform: scale(0.95);
 				transition: all 250ms;
@@ -115,7 +115,8 @@
 					display: inline-block;
 				}
 
-				&.lazy-load-image-loaded, &.video {
+				&.lazy-load-image-loaded,
+				&.video {
 					transform: scale(1);
 					opacity: 1;
 				}
@@ -124,7 +125,8 @@
 					width: 49% !important;
 				}
 
-				img, video {
+				img,
+				video {
 					display: block;
 					width: 100%;
 					height: auto;
@@ -153,18 +155,20 @@
 			transform: scale(0.95);
 			transition: all 250ms;
 
-			&.lazy-load-image-loaded, &.video {
+			&.lazy-load-image-loaded,
+			&.video {
 				transform: scale(1);
 				opacity: 1;
 			}
 
-			img, video {
+			img,
+			video {
 				position: absolute;
 				max-width: 100%;
 				max-height: 100%;
-			  top: 50%;
-			  left: 50%;
-			  transform:translate(-50%, -50%);
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 			}
 		}
 
@@ -177,11 +181,11 @@
 			label {
 				display: block;
 				font-family: sans-serif;
-				font-size: $pad / 4;
-				line-height: $pad / 2;
+				font-size: $pad * 0.25;
+				line-height: $pad * 0.5;
 
 				@include breakpoint($breakMobile) {
-					font-size: $pad / 2;
+					font-size: $pad * 0.5;
 					line-height: $pad;
 				}
 			}
@@ -216,7 +220,7 @@
 		&.back {
 			position: absolute;
 			top: 50%;
-			transform:translate(0, -50%);
+			transform: translate(0, -50%);
 			left: 4vmin;
 			cursor: pointer;
 		}
@@ -224,7 +228,7 @@
 		&.forward {
 			position: absolute;
 			top: 50%;
-			transform:translate(0, -50%);
+			transform: translate(0, -50%);
 			right: 4vmin;
 			cursor: pointer;
 		}

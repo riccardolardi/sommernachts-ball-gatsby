@@ -33,6 +33,7 @@
   "devDependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
+    "@react-three/fiber": "^8.0.12",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.3.1",
     "easy-scroll": "^0.7.0",
@@ -41,7 +42,6 @@
     "prettier": "^2.6.2",
     "react-circular-progressbar": "^2.0.4",
     "react-device-detect": "^2.1.2",
-    "react-three-fiber": "^6.0.13",
     "react-use": "^17.3.2",
     "three": "^0.139.2",
     "yarn-upgrade-all": "^0.7.1"

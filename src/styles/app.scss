@@ -1,5 +1,5 @@
-@import 'breakpoint-sass';
-@import 'vars.scss';
+@import "breakpoint-sass";
+@import "vars.scss";
 
 #app {
 	position: relative;
@@ -32,26 +32,26 @@
 		}
 	}
 
-  h1 {
-  	font-size: $pad * 2;
-  	line-height: $pad * 1.9;
-    margin: 0 0 $pad * 0.4;
-  }
+	h1 {
+		font-size: $pad * 1.5;
+		line-height: $pad * 1.5;
+		margin: 0 0 $pad * 0.4;
+	}
 
-  a {
-  	color: inherit;
-  	text-decoration: none;
-  }
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 
-  p {
-  	hyphens: manual;
-  }
+	p {
+		hyphens: manual;
+	}
 
-  .link {
-  	overflow-wrap: break-word;
-  	text-decoration: underline;
-  	cursor: pointer;
-  }
+	.link {
+		overflow-wrap: break-word;
+		text-decoration: underline;
+		cursor: pointer;
+	}
 
 	.blend {
 		mix-blend-mode: difference;
@@ -73,7 +73,6 @@
 	}
 
 	.suffix-slash {
-
 		&:after {
 			display: inline-block;
 			font-weight: bold;
@@ -90,9 +89,9 @@
 			left: 4vmin;
 
 			@include breakpoint($breakMobile) {
-		  	font-size: 4.8vmax;
-		  	line-height: 5.6vmax;
-		  	left: 6vmin;
+				font-size: 4.8vmax;
+				line-height: 5.6vmax;
+				left: 6vmin;
 				opacity: 0;
 				transition: opacity 0ms 0ms;
 			}
@@ -109,9 +108,9 @@
 
 			@include breakpoint($breakMobile) {
 				opacity: 0;
-		  	font-size: 5.6vmax;
-		  	line-height: 7.2vmax;
-		  	transition: opacity 0ms 0ms;
+				font-size: 5.6vmax;
+				line-height: 7.2vmax;
+				transition: opacity 0ms 0ms;
 			}
 		}
 
@@ -127,51 +126,51 @@
 		top: 4vmin;
 		right: 6vmin;
 		width: 30vmin;
-  	transition: opacity 250ms;
-  	z-index: 5;
+		transition: opacity 250ms;
+		z-index: 5;
 
-  	@include breakpoint($breakMobile) {
-  		top: 4vh;
+		@include breakpoint($breakMobile) {
+			top: 4vh;
 
-  		&.hide {
-  			transition: opacity 0ms;
-  		}
-  	}
+			&.hide {
+				transition: opacity 0ms;
+			}
+		}
 
 		&.show {
-  		opacity: 1;
+			opacity: 1;
 		}
 
 		&.hide {
 			opacity: 0;
 		}
 
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
 	}
 
-  .migros-link {
-    display: block;
-  }
+	.migros-link {
+		display: block;
+	}
 
-  .instagram-link {
-    margin: 0.1em 0 0;
-    a {
-      display: block;
-      z-index: 99;
-    }
-    svg {
-      display: block;
-      font-size: 2.4vmax;
-      left: -0.2vmax;
+	.instagram-link {
+		margin: 0.1em 0 0;
+		a {
+			display: block;
+			z-index: 99;
+		}
+		svg {
+			display: block;
+			font-size: 2.4vmax;
+			left: -0.2vmax;
 
-      @include breakpoint($breakMobile) {
-        font-size: 3.2vmax;
-      }
-    }
-  }
+			@include breakpoint($breakMobile) {
+				font-size: 3.2vmax;
+			}
+		}
+	}
 }

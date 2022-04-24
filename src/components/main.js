@@ -1,6 +1,6 @@
 import React from "react"
 // import ExtraBalls from "./extraballs"
-import Stream from "./stream"
+// import Stream from "./stream"
 import { useScroll } from "react-use"
 import {
 	LazyLoadImage,
@@ -8,7 +8,7 @@ import {
 } from "react-lazy-load-image-component"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
-import hyphenation from "hyphenation.de"
+// import hyphenation from "hyphenation.de"
 import Autolinker from "autolinker"
 import ReactPlayer from "react-player"
 import FacebookIcon from "@material-ui/icons/Facebook"
@@ -20,18 +20,12 @@ import {
 } from "react-circular-progressbar"
 import "../styles/main.scss"
 
+import alzheimberSrcB from "../assets/alzheimer_b.svg"
 import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
-import tanzwerkSrcW from "../assets/tanzwerk_w.svg"
 import sbbSrcB from "../assets/sbb_b.svg"
-import sbbSrcW from "../assets/sbb_w.svg"
 import shopvilleSrcB from "../assets/shopville_b.svg"
-import shopvilleSrcW from "../assets/shopville_w.svg"
-import zurichSrcB from "../assets/zurich_b.svg"
-import zurichSrcW from "../assets/zurich_w.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
-import radio1SrcW from "../assets/radio1_w.svg"
-import sayflowersSrcB from "../assets/sayflowers_b.svg"
-import sayflowersSrcW from "../assets/sayflowers_w.svg"
+import SbbSrcB from "../assets/sbb_b.svg"
 import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
 import scrollDownSrc from "../assets/scroll-down.svg"
@@ -224,15 +218,15 @@ const Main = (props) => {
 				<div className="centerWrap">
 					<div className="text-logo" style={props.wp === 1 ? logo1style : null}>
 						<div className="row">
-							<span className="left suffix-slash">Sommer</span>
+							<span className="left suffix-slash">Zurück</span>
 							<span className="right"></span>
 						</div>
 						<div className="row">
-							<span className="left suffix-slash">Nachts</span>
+							<span className="left suffix-slash">im</span>
 							<span className="right"></span>
 						</div>
 						<div className="row">
-							<span className="left suffix-slash">Ball</span>
+							<span className="left suffix-slash">HB</span>
 							<span className="right"></span>
 						</div>
 					</div>
@@ -297,63 +291,6 @@ const Main = (props) => {
 					{/*{props.wp === 3 && <ExtraBalls wp={props.wp} />}*/}
 				</article>
 			)}
-			{infoData && (
-				<article
-					id="info"
-					data-wp="4"
-					ref={(el) => articleRef.current.push(el)}
-					className={`${props.wp === 4 ? "active" : "inactive"}`}
-				>
-					<div className="content">
-						<h1
-							dangerouslySetInnerHTML={{ __html: Hyphenate(infoData.title) }}
-						/>
-						{infoData.subtitle && (
-							<React.Fragment>
-								<h2 dangerouslySetInnerHTML={{ __html: infoData.subtitle }} />
-								<br />
-							</React.Fragment>
-						)}
-						{infoData.text && (
-							<React.Fragment>
-								<p
-									dangerouslySetInnerHTML={{ __html: Hyphenate(infoData.text) }}
-								/>
-								<br />
-							</React.Fragment>
-						)}
-						<h3>Satellitenbälle</h3>
-						{infoData.satellites?.map((satellite) => {
-							return (
-								<div className="satellite" key={satellite.satelliteTitle}>
-									<h4>
-										<a
-											target="_blank"
-											rel="noopener noreferrer"
-											href={satellite.satelliteLink}
-										>
-											{satellite.satelliteTitle}
-										</a>
-									</h4>
-									<p>{satellite.satelliteDescription}</p>
-								</div>
-							)
-						})}
-						{/*<h3>Partner</h3>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.shopville.ch/"><img src={props.inverted ? shopvilleSrcB : shopvilleSrcW} alt="ShopVille" /></a>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sayflowers.ch/"><img src={props.inverted ? sayflowersSrcB : sayflowersSrcW} alt="SayFlowers" /></a>
-					<br/><br/>
-					<h3>Patronat</h3>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.zurich.ch/"><img src={props.inverted ? zurichSrcB : zurichSrcW} alt="Stadt Zurich" /></a>
-					<br/><br/>
-					<h3>Medienpartner</h3>
-					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>*/}
-					</div>
-					{/*{props.wp === 4 && <ExtraBalls wp={props.wp} />}*/}
-				</article>
-			)}
 			{lineupData && (
 				<article
 					id="lineup"
@@ -380,6 +317,16 @@ const Main = (props) => {
 								/>
 								<br />
 							</React.Fragment>
+						)}
+						{lineupData.schedule && (
+							<div className="schedule">
+								<p>{lineupData.schedule.text}</p>
+								<ul className="acts">
+									{lineupData.schedule.programPoints.map((element, index) => (
+										<li key={index}>{element.programPoint}</li>
+									))}
+								</ul>
+							</div>
 						)}
 						<div className="isolate">
 							{lineupData.artists.map((artist, index) => {
@@ -435,15 +382,18 @@ const Main = (props) => {
 													}}
 												/>
 												<p>
-													<a
-														dangerouslySetInnerHTML={{
-															__html: artist.link.replace(/(^\w+:|^)\/\//, ""),
-														}}
-														target="_blank"
-														rel="noopener noreferrer"
-														href={artist.link}
-														className="link"
-													/>
+													{artist.links.map((link, index) => (
+														<a
+															key={index}
+															dangerouslySetInnerHTML={{
+																__html: link.link.replace(/(^\w+:|^)\/\//, ""),
+															}}
+															target="_blank"
+															rel="noopener noreferrer"
+															href={link.link}
+															className="link"
+														/>
+													))}
 												</p>
 												{artist.facebook && (
 													<a
@@ -471,6 +421,64 @@ const Main = (props) => {
 						</div>
 					</div>
 					{/*{props.wp === 5 && <ExtraBalls wp={props.wp} />}*/}
+				</article>
+			)}
+			{infoData && (
+				<article
+					id="info"
+					data-wp="4"
+					ref={(el) => articleRef.current.push(el)}
+					className={`${props.wp === 4 ? "active" : "inactive"}`}
+				>
+					<div className="content">
+						<h1
+							dangerouslySetInnerHTML={{ __html: Hyphenate(infoData.title) }}
+						/>
+						{infoData.subtitle && (
+							<React.Fragment>
+								<h2 dangerouslySetInnerHTML={{ __html: infoData.subtitle }} />
+								<br />
+							</React.Fragment>
+						)}
+						{infoData.text && (
+							<React.Fragment>
+								<p
+									dangerouslySetInnerHTML={{ __html: Hyphenate(infoData.text) }}
+								/>
+								<br />
+							</React.Fragment>
+						)}
+						{/*<h3>Satellitenbälle</h3>
+						{infoData.satellites?.map((satellite) => {
+							return (
+								<div className="satellite" key={satellite.satelliteTitle}>
+									<h4>
+										<a
+											target="_blank"
+											rel="noopener noreferrer"
+											href={satellite.satelliteLink}
+										>
+											{satellite.satelliteTitle}
+										</a>
+									</h4>
+									<p>{satellite.satelliteDescription}</p>
+								</div>
+							)
+						})}
+					*/}
+						{/*<h3>Partner</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.tanzwerk101.ch/"><img src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW} alt="Tanzwerk 101" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sbb.ch/"><img src={props.inverted ? sbbSrcB : sbbSrcW} alt="SBB" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.shopville.ch/"><img src={props.inverted ? shopvilleSrcB : shopvilleSrcW} alt="ShopVille" /></a>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.sayflowers.ch/"><img src={props.inverted ? sayflowersSrcB : sayflowersSrcW} alt="SayFlowers" /></a>
+					<br/><br/>
+					<h3>Patronat</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.zurich.ch/"><img src={props.inverted ? zurichSrcB : zurichSrcW} alt="Stadt Zurich" /></a>
+					<br/><br/>
+					<h3>Medienpartner</h3>
+					<a className="partner" target="_blank" rel="noopener noreferrer" href="http://www.radio1.ch/"><img src={props.inverted ? radio1SrcB : radio1SrcW} alt="Radio 1" /></a>*/}
+					</div>
+					{/*{props.wp === 4 && <ExtraBalls wp={props.wp} />}*/}
 				</article>
 			)}
 			{galleryData && (
@@ -710,10 +718,7 @@ const Main = (props) => {
 							rel="noopener noreferrer"
 							href="http://www.tanzwerk101.ch/"
 						>
-							<img
-								src={props.inverted ? tanzwerkSrcB : tanzwerkSrcW}
-								alt="Tanzwerk 101"
-							/>
+							<img src={tanzwerkSrcB} alt="Tanzwerk 101" />
 						</a>
 						<a
 							className="partner"
@@ -721,7 +726,39 @@ const Main = (props) => {
 							rel="noopener noreferrer"
 							href="https://swissdance.ch/"
 						>
-							<img src={swissdanceSrc} alt="SBB" />
+							<img src={swissdanceSrc} alt="Swissdance" />
+						</a>
+						<a
+							className="partner"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://sbb.ch/"
+						>
+							<img src={sbbSrcB} alt="SBB" />
+						</a>
+						<a
+							className="partner"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://radio1.ch/"
+						>
+							<img src={radio1SrcB} alt="Radio1" />
+						</a>
+						<a
+							className="partner"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://shopville.ch/"
+						>
+							<img src={shopvilleSrcB} alt="Shopville" />
+						</a>
+						<a
+							className="partner"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://alzheimer.ch/"
+						>
+							<img src={alzheimberSrcB} alt="Alzheimer Zürich" />
 						</a>
 					</div>
 					{/*{props.wp === 8 && <ExtraBalls wp={props.wp} />}*/}

@@ -1,10 +1,10 @@
-import React from 'react'
-import * as THREE from 'three'
-import { useThree } from 'react-three-fiber'
+import React from "react"
+import { useThree } from "@react-three/fiber"
 
-const Ball = React.memo(function Ball(props) {
+const Ball = React.memo(function Ball() {
 	const { size } = useThree()
-	const rndScale = Math.random() * Math.min(size.width, size.height) / 5 + 
+	const rndScale =
+		(Math.random() * Math.min(size.width, size.height)) / 5 +
 		Math.min(size.width, size.height) / 10
 	const rndX = Math.random() * size.width - size.width / 2
 	const rndY = Math.random() * size.height - size.height / 2
@@ -14,12 +14,12 @@ const Ball = React.memo(function Ball(props) {
 	const scale = React.useRef(rndScale)
 	const position = React.useRef(rndPos)
 
-  return (
-    <mesh position={position.current}>
-      <sphereBufferGeometry attach="geometry" args={[scale.current, 64, 64]} />
-      <meshBasicMaterial attach="material" color={'#ffffff'} />
-    </mesh>
-  )
+	return (
+		<mesh position={position.current}>
+			<sphereBufferGeometry attach="geometry" args={[scale.current, 64, 64]} />
+			<meshBasicMaterial attach="material" color={"#ffffff"} />
+		</mesh>
+	)
 })
 
 export default Ball

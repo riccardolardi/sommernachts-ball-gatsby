@@ -1,10 +1,10 @@
 import React from "react"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="Unbekannte Seite" />
+    <Seo title="Unbekannte Seite" />
     <h1>Unbekannte Seite</h1>
     <p>Es scheint als hätten Sie sich verirrt...</p>
   </Layout>
