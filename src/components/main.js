@@ -218,15 +218,15 @@ const Main = (props) => {
 				<div className="centerWrap">
 					<div className="text-logo" style={props.wp === 1 ? logo1style : null}>
 						<div className="row">
-							<span className="left suffix-slash">Zurück</span>
+							<span className="left suffix-slash">Sommer</span>
 							<span className="right"></span>
 						</div>
 						<div className="row">
-							<span className="left suffix-slash">im</span>
+							<span className="left suffix-slash">Nachts</span>
 							<span className="right"></span>
 						</div>
 						<div className="row">
-							<span className="left suffix-slash">HB</span>
+							<span className="left suffix-slash">Ball</span>
 							<span className="right"></span>
 						</div>
 					</div>
@@ -241,15 +241,15 @@ const Main = (props) => {
 					<div className="text-logo" style={props.wp === 2 ? logo2style : null}>
 						<div className="row">
 							<span className="left"></span>
-							<span className="right">Unser</span>
+							<span className="right">Zurück</span>
 						</div>
 						<div className="row">
 							<span className="left"></span>
-							<span className="right">Ball</span>
+							<span className="right">im</span>
 						</div>
 						<div className="row">
 							<span className="left"></span>
-							<span className="right">Für alle</span>
+							<span className="right">HB</span>
 						</div>
 					</div>
 				</div>
