@@ -22,16 +22,14 @@ import "../styles/main.scss"
 
 import alzheimberSrcB from "../assets/alzheimer_b.svg"
 import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
-import sbbSrcB from "../assets/sbb_b.svg"
 import shopvilleSrcB from "../assets/shopville_b.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
-import SbbSrcB from "../assets/sbb_b.svg"
+import sbbSrcB from "../assets/sbb_b.svg"
 import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
 import scrollDownSrc from "../assets/scroll-down.svg"
 import menuSrc from "../assets/menu.svg"
 import closeSrc from "../assets/close.svg"
-import swissdanceSrc from "../assets/swissdance.png"
 
 const isSSR = typeof window === "undefined"
 const ClientSideOnlyLazyStream = React.lazy(() => import("./stream"))
@@ -719,14 +717,6 @@ const Main = (props) => {
 							href="http://www.tanzwerk101.ch/"
 						>
 							<img src={tanzwerkSrcB} alt="Tanzwerk 101" />
-						</a>
-						<a
-							className="partner"
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://swissdance.ch/"
-						>
-							<img src={swissdanceSrc} alt="Swissdance" />
 						</a>
 						<a
 							className="partner"
