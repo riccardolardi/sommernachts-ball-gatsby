@@ -320,14 +320,14 @@ const Main = (props) => {
 							<div className="schedule">
 								<p>{lineupData.schedule.text}</p>
 								<ul className="acts">
-									{lineupData.schedule.programPoints.map((element, index) => (
+									{lineupData.schedule.programPoints?.map((element, index) => (
 										<li key={index}>{element.programPoint}</li>
 									))}
 								</ul>
 							</div>
 						)}
 						<div className="isolate">
-							{lineupData.artists.map((artist, index) => {
+							{lineupData.artists?.map((artist, index) => {
 								return (
 									<section key={index} className="artist-info">
 										<h2
@@ -380,7 +380,7 @@ const Main = (props) => {
 													}}
 												/>
 												<p>
-													{artist.links.map((link, index) => (
+													{artist.links?.map((link, index) => (
 														<a
 															key={index}
 															dangerouslySetInnerHTML={{
@@ -522,7 +522,7 @@ const Main = (props) => {
 						<br />
 						<div className="isolate">
 							{galleryData.videos &&
-								galleryData.videos.map((video, index) => {
+								galleryData.videos?.map((video, index) => {
 									return (
 										<LazyLoadComponent key={index}>
 											<ReactPlayer
@@ -552,7 +552,7 @@ const Main = (props) => {
 								})}
 							{galleryData.images && (
 								<div className="gallery-photos">
-									{galleryData.images.map((el, index) => {
+									{galleryData.images?.map((el, index) => {
 										return (
 											<LazyLoadImage
 												key={index}
