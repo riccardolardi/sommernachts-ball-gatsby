@@ -24,7 +24,7 @@ import alzheimberSrcB from "../assets/alzheimer_b.svg"
 import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
 import shopvilleSrcB from "../assets/shopville_b.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
-import sbbSrcB from "../assets/sbb_b.svg"
+// import sbbSrcB from "../assets/sbb_b.svg"
 import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
 import scrollDownSrc from "../assets/scroll-down.svg"
@@ -718,14 +718,14 @@ const Main = (props) => {
             >
               <img src={tanzwerkSrcB} alt="Tanzwerk 101" />
             </a>
-            <a
+            {/* <a
               className="partner"
               target="_blank"
               rel="noopener noreferrer"
               href="https://sbb.ch/"
             >
               <img src={sbbSrcB} alt="SBB" />
-            </a>
+            </a> */}
             <a
               className="partner"
               target="_blank"
