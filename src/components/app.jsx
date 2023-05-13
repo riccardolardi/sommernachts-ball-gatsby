@@ -113,7 +113,7 @@ const App = (props) => {
             </div>
           </header>
           <a
-            href="https://migros-engagement.ch/engagement"
+            href="https://engagement.migros.ch"
             target="_blank"
             rel="noopener noreferrer"
             className={`migros-logo migros-link blend ${

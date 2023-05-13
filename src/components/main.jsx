@@ -24,6 +24,7 @@ import alzheimberSrcB from "../assets/alzheimer_b.svg"
 import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
 import shopvilleSrcB from "../assets/shopville_b.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
+import srkB from "../assets/srk_b.svg"
 // import sbbSrcB from "../assets/sbb_b.svg"
 import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
@@ -750,6 +751,14 @@ const Main = (props) => {
             >
               <img src={alzheimberSrcB} alt="Alzheimer Zürich" />
             </a>
+            <a
+              className="partner"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.redcross.ch/"
+            >
+              <img src={srkB} alt="Schweizerisches Rotes Kreuz" />
+            </a>
           </div>
           {/*{props.wp === 8 && <ExtraBalls wp={props.wp} />}*/}
         </article>
@@ -761,7 +770,7 @@ const Main = (props) => {
       >
         <div className="centerWrap">
           <a
-            href="https://migros-engagement.ch/engagement"
+            href="https://engagement.migros.ch"
             target="_blank"
             rel="noopener noreferrer"
             className="migros-link"
