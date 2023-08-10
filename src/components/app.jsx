@@ -63,6 +63,14 @@ const App = (props) => {
     isIE: isIE,
   })
 
+  const showFooter = () => {
+    if (isMobile) {
+      return mobileNavOpen
+    } else {
+      return !isIntro
+    }
+  }
+
   return (
     <div id="app" className={classes}>
       {isIE ? (
@@ -88,7 +96,7 @@ const App = (props) => {
           {/*<Three show={isIntro || mobileNavOpen} />*/}
           <header
             className={`text-logo front 
-		    	${(!isIntro && !isMobile) || mobileNavOpen ? "show" : "hide"}`}
+          ${(!isIntro && !isMobile) || mobileNavOpen ? "show" : "hide"}`}
           >
             <div className="row">
               <span className="left suffix-slash">Sommer</span>
@@ -146,6 +154,13 @@ const App = (props) => {
             mobileNavOpen={mobileNavOpen}
             onExtraWheel={onExtraWheel}
           />
+          <footer id="footer" className={showFooter() ? "" : "hidden"}>
+            <a href="https://www.migros.ch/de/content/rechtliche-informationen">
+              Rechtliches
+            </a>
+            <span>/</span>
+            <a href="https://privacy.migros.ch/de">Datenschutz</a>
+          </footer>
         </React.Fragment>
       )}
     </div>

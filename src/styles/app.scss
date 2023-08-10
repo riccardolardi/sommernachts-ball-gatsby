@@ -2,175 +2,195 @@
 @import "vars.scss";
 
 #app {
-	position: relative;
-	color: white;
-	background-color: black;
-	perspective: 2px;
-	overflow: hidden;
+  position: relative;
+  color: white;
+  background-color: black;
+  perspective: 2px;
+  overflow: hidden;
 
-	&.inverted {
-		background-color: white;
-		color: black;
+  &.inverted {
+    background-color: white;
+    color: black;
 
-		.isolate {
-			color: black;
-		}
-	}
+    .isolate {
+      color: black;
+    }
+  }
 
-	&.isIE {
-		height: 100%;
-		font-size: 24px;
-		line-height: 36px;
-		padding: 24px;
+  &.isIE {
+    height: 100%;
+    font-size: 24px;
+    line-height: 36px;
+    padding: 24px;
 
-		p {
-			margin-bottom: 36px;
-		}
+    p {
+      margin-bottom: 36px;
+    }
 
-		a {
-			text-decoration: underline;
-		}
-	}
+    a {
+      text-decoration: underline;
+    }
+  }
 
-	h1 {
-		font-size: $pad * 1.5;
-		line-height: $pad * 1.5;
-		margin: 0 0 $pad * 0.4;
-	}
+  h1 {
+    font-size: $pad * 1.5;
+    line-height: $pad * 1.5;
+    margin: 0 0 $pad * 0.4;
+  }
 
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-	p {
-		hyphens: manual;
-	}
+  p {
+    hyphens: manual;
+  }
 
-	.link {
-		overflow-wrap: break-word;
-		text-decoration: underline;
-		cursor: pointer;
-	}
+  .link {
+    overflow-wrap: break-word;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
-	.blend {
-		mix-blend-mode: difference;
-	}
+  .blend {
+    mix-blend-mode: difference;
+  }
 
-	.isolate {
-		isolation: isolate;
-	}
+  .isolate {
+    isolation: isolate;
+  }
 
-	.icon {
-		position: relative;
-		font-size: $pad;
-		left: -0.4vmax;
+  .icon {
+    position: relative;
+    font-size: $pad;
+    left: -0.4vmax;
 
-		@include breakpoint($breakMobile) {
-			font-size: $pad * 2;
-			left: -0.8vmax;
-		}
-	}
+    @include breakpoint($breakMobile) {
+      font-size: $pad * 2;
+      left: -0.8vmax;
+    }
+  }
 
-	.suffix-slash {
-		&:after {
-			display: inline-block;
-			font-weight: bold;
-			content: "/";
-		}
-	}
+  .suffix-slash {
+    &:after {
+      display: inline-block;
+      font-weight: bold;
+      content: "/";
+    }
+  }
 
-	.text-logo {
-		display: inline-block;
+  .text-logo {
+    display: inline-block;
 
-		&.front {
-			position: absolute;
-			top: 4vmin;
-			left: 4vmin;
+    &.front {
+      position: absolute;
+      top: 4vmin;
+      left: 4vmin;
 
-			@include breakpoint($breakMobile) {
-				font-size: 4.8vmax;
-				line-height: 5.6vmax;
-				left: 6vmin;
-				opacity: 0;
-				transition: opacity 0ms 0ms;
-			}
-		}
+      @include breakpoint($breakMobile) {
+        font-size: 4.8vmax;
+        line-height: 5.6vmax;
+        left: 6vmin;
+        opacity: 0;
+        transition: opacity 0ms 0ms;
+      }
+    }
 
-		&.show {
-			opacity: 1;
-			transition: opacity 250ms 0ms;
-		}
+    &.show {
+      opacity: 1;
+      transition: opacity 250ms 0ms;
+    }
 
-		&.hide {
-			opacity: 0;
-			transition: opacity 250ms 0ms;
+    &.hide {
+      opacity: 0;
+      transition: opacity 250ms 0ms;
 
-			@include breakpoint($breakMobile) {
-				opacity: 0;
-				font-size: 5.6vmax;
-				line-height: 7.2vmax;
-				transition: opacity 0ms 0ms;
-			}
-		}
+      @include breakpoint($breakMobile) {
+        opacity: 0;
+        font-size: 5.6vmax;
+        line-height: 7.2vmax;
+        transition: opacity 0ms 0ms;
+      }
+    }
 
-		.row {
-			display: flex;
-			justify-content: space-between;
-		}
-	}
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
-	.migros-logo {
-		display: block;
-		position: absolute;
-		top: 4vmin;
-		right: 6vmin;
-		width: 30vmin;
-		transition: opacity 250ms;
-		z-index: 5;
+  .migros-logo {
+    display: block;
+    position: absolute;
+    top: 4vmin;
+    right: 6vmin;
+    width: 30vmin;
+    transition: opacity 250ms;
+    z-index: 5;
 
-		@include breakpoint($breakMobile) {
-			top: 4vh;
+    @include breakpoint($breakMobile) {
+      top: 4vh;
 
-			&.hide {
-				transition: opacity 0ms;
-			}
-		}
+      &.hide {
+        transition: opacity 0ms;
+      }
+    }
 
-		&.show {
-			opacity: 1;
-		}
+    &.show {
+      opacity: 1;
+    }
 
-		&.hide {
-			opacity: 0;
-		}
+    &.hide {
+      opacity: 0;
+    }
 
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-			object-fit: contain;
-		}
-	}
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
 
-	.migros-link {
-		display: block;
-	}
+  .migros-link {
+    display: block;
+  }
 
-	.instagram-link {
-		margin: 0.1em 0 0;
-		a {
-			display: block;
-			z-index: 99;
-		}
-		svg {
-			display: block;
-			font-size: 2.4vmax;
-			left: -0.2vmax;
+  .instagram-link {
+    margin: 0.1em 0 0;
+    a {
+      display: block;
+      z-index: 99;
+    }
+    svg {
+      display: block;
+      font-size: 2.4vmax;
+      left: -0.2vmax;
 
-			@include breakpoint($breakMobile) {
-				font-size: 3.2vmax;
-			}
-		}
-	}
+      @include breakpoint($breakMobile) {
+        font-size: 3.2vmax;
+      }
+    }
+  }
+
+  footer#footer {
+    position: absolute;
+    bottom: 4vmin;
+    right: 4vmin;
+    font-size: 16px;
+    transition: opacity 250ms 0ms;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    span {
+      margin: 0 1ch;
+    }
+
+    @include breakpoint($breakMobile) {
+      font-size: 12px;
+    }
+  }
 }
