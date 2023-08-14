@@ -9,6 +9,7 @@ import Main from "./main"
 import Navi from "./navi"
 // import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
+import CookieConsent from "react-cookie-consent"
 import "../styles/app.scss"
 
 let mainEl
@@ -161,6 +162,41 @@ const App = (props) => {
             <span>/</span>
             <a href="https://privacy.migros.ch/de">Datenschutz</a>
           </footer>
+          <CookieConsent
+            debug={false}
+            disableStyles={true}
+            location="none"
+            buttonText="Verstanden"
+            style={{
+              position: "fixed",
+              left: "16px",
+              bottom: "16px",
+              width: "calc(100% - 32px)",
+              zIndex: "100",
+              backgroundColor: "#ffffff",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "2ch",
+              fontSize: "16px",
+              lineHeight: "24px",
+              padding: "2ch",
+              border: "1px solid #000000",
+            }}
+            disableButtonStyles={true}
+            buttonStyle={{
+              fontFamily: "inherit",
+              color: "#ffffff",
+              backgroundColor: "#000000",
+              fontSize: "16px",
+              border: "0 none",
+              padding: "1ch 2ch",
+            }}
+            expires={150}
+          >
+            Wir verwenden Cookies. Wenn du das nicht möchtest, kannst du die
+            Browser-Einstellungen ändern.
+          </CookieConsent>
         </React.Fragment>
       )}
     </div>
