@@ -1,240 +1,227 @@
-@import 'breakpoint-sass';
-@import 'vars.scss';
-@import 'mixins.scss';
+@import "breakpoint-sass";
+@import "vars.scss";
+@import "mixins.scss";
 
 .extra-ball {
-	position: absolute;
-	background-color: white;
-	width: 10vmax;
-	height: 10vmax;
-	border-radius: 5vmax;
-	will-change: transform;
-	pointer-events: none;
-	opacity: 0;
-	z-index: 10;
+  position: absolute;
+  background-color: white;
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 5vmax;
+  will-change: transform;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
 
-	&.show {
-		opacity: 1;
-		transition: opacity 250ms 0ms;
-	}
+  &.show {
+    opacity: 1;
+    transition: opacity 250ms 0ms;
+  }
 
-	&.leading {
+  &.leading {
+    &.wp3 {
+      &:nth-of-type(1n) {
+        @include circle(30);
+        top: -10vmax;
+        right: -10vw;
+      }
 
-		&.wp3 {
+      &:nth-of-type(2n) {
+        @include circle(15);
+        top: -5vmax;
+        right: 44vw;
+      }
+    }
 
-			&:nth-of-type(1n) {
-				@include circle(30);
-				top: -10vmax;
-				right: -10vw;
-			}
+    &.wp4 {
+      &:nth-of-type(1n) {
+        @include circle(20);
+        top: -3vmax;
+        right: 20vw;
+      }
 
-			&:nth-of-type(2n) {
-				@include circle(15);
-				top: -5vmax;
-				right: 44vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(40);
+        top: -20vmax;
+        right: 60vw;
+      }
+    }
 
-		&.wp4 {
-			
-			&:nth-of-type(1n) {
-				@include circle(20);
-				top: -3vmax;
-				right: 20vw;
-			}
+    &.wp5 {
+      &:nth-of-type(1n) {
+        @include circle(35);
+        top: -6vmax;
+        right: -15vw;
+      }
 
-			&:nth-of-type(2n) {
-				@include circle(40);
-				top: -20vmax;
-				right: 60vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(20);
+        top: -5vmax;
+        right: 50vw;
+      }
+    }
 
-		&.wp5 {
-			
-			&:nth-of-type(1n) {
-				@include circle(35);
-				top: -6vmax;
-				right: -15vw;
-			}
+    &.wp6 {
+      &:nth-of-type(1n) {
+        @include circle(40);
+        top: -12vmax;
+        right: 0vw;
+      }
 
-			&:nth-of-type(2n) {
-				@include circle(20);
-				top: -5vmax;
-				right: 50vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        display: none;
+      }
+    }
 
-		&.wp6 {
-			
-			&:nth-of-type(1n) {
-				@include circle(40);
-				top: -12vmax;
-				right: 0vw;
-			}
+    &.wp7 {
+      &:nth-of-type(1n) {
+        @include circle(35);
+        top: -12vmax;
+        right: -20vw;
+      }
 
-			&:nth-of-type(2n) {
-				display: none;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(20);
+        top: -6vmax;
+        right: 50vw;
+      }
+    }
 
-		&.wp7 {
-			
-			&:nth-of-type(1n) {
-				@include circle(35);
-				top: -12vmax;
-				right: -20vw;
-			}
+    &.wp8 {
+      &:nth-of-type(1n) {
+        @include circle(30);
+        top: -20vh;
+        right: -10vw;
+      }
 
-			&:nth-of-type(2n) {
-				@include circle(20);
-				top: -6vmax;
-				right: 50vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(15);
+        top: -12vh;
+        right: 40vw;
+      }
+    }
+  }
 
-		&.wp8 {
+  &.trailing {
+    &.wp3 {
+      &:nth-of-type(1n) {
+        @include circle(40);
+        bottom: -100vh;
+        bottom: -100dvh;
+        right: -10vw;
+      }
 
-			&:nth-of-type(1n) {
-				@include circle(30);
-				top: -20vh;
-				right: -10vw;
-			}
+      &:nth-of-type(2n) {
+        @include circle(20);
+        bottom: -50vh;
+        right: 40vw;
+      }
 
-			&:nth-of-type(2n) {
-				@include circle(15);
-				top: -12vh;
-				right: 40vw;
-			}
-		}
-	}
+      &:nth-of-type(3n) {
+        @include circle(15);
+        bottom: -60vh;
+        right: 70vw;
+      }
+    }
 
-	&.trailing {
+    &.wp4 {
+      &:nth-of-type(1n) {
+        @include circle(15);
+        bottom: -10vh;
+        right: 10vw;
+      }
 
-		&.wp3 {
+      &:nth-of-type(2n) {
+        @include circle(30);
+        bottom: -90vh;
+        right: 30vw;
+      }
 
-			&:nth-of-type(1n) {
-				@include circle(40);
-				bottom: -100vh;
-				right: -10vw;
-			}
+      &:nth-of-type(3n) {
+        @include circle(40);
+        bottom: -60vh;
+        right: 70vw;
+      }
+    }
 
-			&:nth-of-type(2n) {
-				@include circle(20);
-				bottom: -50vh;
-				right: 40vw;
-			}
+    &.wp5 {
+      &:nth-of-type(1n) {
+        @include circle(20);
+        bottom: -70vh;
+        right: 10vw;
+      }
 
-			&:nth-of-type(3n) {
-				@include circle(15);
-				bottom: -60vh;
-				right: 70vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(10);
+        bottom: -30vh;
+        right: 40vw;
+      }
 
-		&.wp4 {
-			
-			&:nth-of-type(1n) {
-				@include circle(15);
-				bottom: -10vh;
-				right: 10vw;
-			}
+      &:nth-of-type(3n) {
+        @include circle(30);
+        bottom: -120vh;
+        right: 60vw;
+      }
+    }
 
-			&:nth-of-type(2n) {
-				@include circle(30);
-				bottom: -90vh;
-				right: 30vw;
-			}
+    &.wp6 {
+      &:nth-of-type(1n) {
+        @include circle(15);
+        bottom: -70vh;
+        right: 70vw;
+      }
 
-			&:nth-of-type(3n) {
-				@include circle(40);
-				bottom: -60vh;
-				right: 70vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(25);
+        bottom: -120vh;
+        right: 30vw;
+      }
 
-		&.wp5 {
-			
-			&:nth-of-type(1n) {
-				@include circle(20);
-				bottom: -70vh;
-				right: 10vw;
-			}
+      &:nth-of-type(3n) {
+        @include circle(40);
+        bottom: -90vh;
+        right: -10vw;
+      }
+    }
 
-			&:nth-of-type(2n) {
-				@include circle(10);
-				bottom: -30vh;
-				right: 40vw;
-			}
+    &.wp7 {
+      &:nth-of-type(1n) {
+        @include circle(15);
+        bottom: -80vh;
+        right: 20vw;
+      }
 
-			&:nth-of-type(3n) {
-				@include circle(30);
-				bottom: -120vh;
-				right: 60vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(25);
+        bottom: -130vh;
+        right: 30vw;
+      }
 
-		&.wp6 {
-			
-			&:nth-of-type(1n) {
-				@include circle(15);
-				bottom: -70vh;
-				right: 70vw;
-			}
+      &:nth-of-type(3n) {
+        @include circle(35);
+        bottom: -85vh;
+        right: 70vw;
+      }
+    }
 
-			&:nth-of-type(2n) {
-				@include circle(25);
-				bottom: -120vh;
-				right: 30vw;
-			}
+    &.wp8 {
+      &:nth-of-type(1n) {
+        @include circle(20);
+        bottom: -70vh;
+        right: 10vw;
+      }
 
-			&:nth-of-type(3n) {
-				@include circle(40);
-				bottom: -90vh;
-				right: -10vw;
-			}
-		}
+      &:nth-of-type(2n) {
+        @include circle(25);
+        bottom: -50vh;
+        right: 60vw;
+      }
 
-		&.wp7 {
-			
-			&:nth-of-type(1n) {
-				@include circle(15);
-				bottom: -80vh;
-				right: 20vw;
-			}
-
-			&:nth-of-type(2n) {
-				@include circle(25);
-				bottom: -130vh;
-				right: 30vw;
-			}
-
-			&:nth-of-type(3n) {
-				@include circle(35);
-				bottom: -85vh;
-				right: 70vw;
-			}
-		}
-
-		&.wp8 {
-			
-			&:nth-of-type(1n) {
-				@include circle(20);
-				bottom: -70vh;
-				right: 10vw;
-			}
-
-			&:nth-of-type(2n) {
-				@include circle(25);
-				bottom: -50vh;
-				right:60vw;
-			}
-
-			&:nth-of-type(3n) {
-				@include circle(10);
-				bottom: -80vh;
-				right: 40vw;
-			}
-		}
-	}
+      &:nth-of-type(3n) {
+        @include circle(10);
+        bottom: -80vh;
+        right: 40vw;
+      }
+    }
+  }
 }

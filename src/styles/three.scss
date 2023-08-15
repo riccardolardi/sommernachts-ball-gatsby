@@ -1,16 +1,17 @@
 #three {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	pointer-events: none;
-	z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 10;
 
-	&.show {
-		opacity: 1;
-		transition: 250ms 125ms;
-	}
+  &.show {
+    opacity: 1;
+    transition: 250ms 125ms;
+  }
 
-	&.hide {
-		opacity: 0;
-	}
+  &.hide {
+    opacity: 0;
+  }
 }
