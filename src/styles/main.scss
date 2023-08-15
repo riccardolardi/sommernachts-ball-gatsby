@@ -139,6 +139,7 @@ main#main {
 
         &.open {
           max-height: 1000vh;
+          max-height: 1000dvh;
           opacity: 1;
           transition: opacity 250ms 0ms, max-height 0ms 0ms;
         }
@@ -325,6 +326,7 @@ main#main {
     display: block;
     position: fixed;
     bottom: 4.6vh;
+    bottom: 4.6dvh;
     left: 50%;
     width: $pad * 1.4;
     height: $pad * 1.4;
@@ -351,6 +353,7 @@ main#main {
       pointer-events: none;
       transition: transform 250ms 0ms, opacity 250ms 0ms;
       transform: translateY(10vh);
+      transform: translateY(10dvh);
       opacity: 0;
     }
 
