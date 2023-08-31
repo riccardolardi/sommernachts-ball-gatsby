@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 module.exports = {
   siteMetadata: {
     title: `Sommernachts-Ball`,
@@ -52,13 +52,7 @@ module.exports = {
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `${process.env.WP_BASE_URL}/graphql`
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-16856648-8",
+        url: `${process.env.WP_BASE_URL}/graphql`,
       },
     },
   ],

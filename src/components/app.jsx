@@ -4,6 +4,7 @@ import { createBreakpoint } from "react-use"
 import { isIE, isSafari, isMobile as isTouch } from "react-device-detect"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import easyScroll from "easy-scroll"
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined"
 // import Three from "./three"
 import Main from "./main"
 import Navi from "./navi"
@@ -11,6 +12,7 @@ import Navi from "./navi"
 import logoSrcW from "../assets/migros_w.svg"
 import CookieConsent from "react-cookie-consent"
 import "../styles/app.scss"
+import { Script } from "gatsby"
 
 let mainEl
 const useBreakpoint = createBreakpoint({
@@ -24,6 +26,8 @@ const App = (props) => {
   const [isIntro, setIsIntro] = React.useState(false)
   const [inverted] = React.useState(true)
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
+  const [cookiesAccepted, setCookiesAccepted] = React.useState(false)
+  const [showImprint, setShowImprint] = React.useState(false)
   const isMobile = useBreakpoint() === "mobile"
 
   React.useEffect(() => {
@@ -155,7 +159,53 @@ const App = (props) => {
             mobileNavOpen={mobileNavOpen}
             onExtraWheel={onExtraWheel}
           />
+          {showImprint && (
+            <section className="imprint">
+              <div className="imprint-inner">
+                <div>
+                  <p>
+                    <b>Impressum</b>
+                  </p>
+                  <p>
+                    Genossenschaft Migros Zürich
+                    <br />
+                    Pfingstweidstrasse 101
+                    <br />
+                    8005 Zürich
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <b>Kontakt</b>
+                  </p>
+                  <p>
+                    Kulturprozent Migros Zürich
+                    <br />
+                    Pfingstweidstrasse 101
+                    <br />
+                    8005 Zürich
+                    <br />
+                    <a href="mailto:patrick.mueller@gmz.migros.ch">
+                      patrick.mueller@gmz.migros.ch
+                    </a>
+                    <br />
+                    <a href="tel:+41585615303">+41 58 561 53 03</a>
+                    <br />
+                  </p>
+                </div>
+              </div>
+              <CloseOutlinedIcon
+                className="icon close"
+                fontSize="large"
+                onClick={() => setShowImprint(false)}
+              />
+            </section>
+          )}
           <footer id="footer" className={showFooter() ? "" : "hidden"}>
+            <button type="button" onClick={() => setShowImprint(true)}>
+              Impressum
+            </button>
+            <span>/</span>
             <a href="https://www.migros.ch/de/content/rechtliche-informationen">
               Rechtliches
             </a>
@@ -164,9 +214,11 @@ const App = (props) => {
           </footer>
           <CookieConsent
             debug={false}
-            disableStyles={true}
+            enableDeclineButton
+            disableStyles
             location="none"
-            buttonText="Verstanden"
+            buttonText="Einverstanden"
+            declineButtonText="Ablehnen"
             style={{
               position: "fixed",
               left: "16px",
@@ -183,20 +235,42 @@ const App = (props) => {
               padding: "2ch",
               border: "1px solid #000000",
             }}
-            disableButtonStyles={true}
+            disableButtonStyles
+            declineButtonStyle={{
+              fontFamily: "inherit",
+              backgroundColor: "#ffffff",
+              border: "1px solid #000000",
+              fontSize: "16px",
+              padding: "1ch 2ch",
+              margin: "0 1ch 0 0",
+            }}
             buttonStyle={{
               fontFamily: "inherit",
               color: "#ffffff",
               backgroundColor: "#000000",
               fontSize: "16px",
-              border: "0 none",
+              border: "1px solid #000000",
               padding: "1ch 2ch",
             }}
             expires={150}
+            onAccept={() => setCookiesAccepted(true)}
           >
-            Wir verwenden Cookies. Wenn du das nicht möchtest, kannst du die
-            Browser-Einstellungen ändern.
+            Erklärst Du dich einverstanden, dass wir zu statistischen Zwecken
+            Cookies verwenden?
           </CookieConsent>
+          {cookiesAccepted && (
+            <>
+              <Script src="https://www.googletagmanager.com/gtag/js?id=UA-16856648-8" />
+              <Script>
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments)};
+                  gtag('js', new Date());
+                  gtag('config', 'UA-16856648-8', { 'anonymize_ip': true })
+                `}
+              </Script>
+            </>
+          )}
         </React.Fragment>
       )}
     </div>
