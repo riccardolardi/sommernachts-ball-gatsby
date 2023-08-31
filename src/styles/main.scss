@@ -56,33 +56,6 @@ main#main {
       padding-top: 0;
     }
 
-    &[data-wp="1"] {
-    }
-
-    &[data-wp="2"] {
-    }
-
-    &[data-wp="3"] {
-    }
-
-    &[data-wp="4"] {
-    }
-
-    &[data-wp="5"] {
-    }
-
-    &[data-wp="6"] {
-    }
-
-    &[data-wp="7"] {
-    }
-
-    &[data-wp="8"] {
-    }
-
-    &[data-wp="9"] {
-    }
-
     .content {
       opacity: 0;
     }
@@ -325,8 +298,8 @@ main#main {
   .scroll-indicator {
     display: block;
     position: fixed;
-    bottom: 4.6vh;
-    bottom: 4.6dvh;
+    bottom: 7.2vh;
+    bottom: 7.2dvh;
     left: 50%;
     width: $pad * 1.4;
     height: $pad * 1.4;

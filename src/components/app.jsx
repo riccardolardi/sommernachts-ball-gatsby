@@ -242,8 +242,8 @@ const App = (props) => {
               border: "1px solid #000000",
               fontSize: "16px",
               padding: "1ch 2ch",
-              margin: "0 1ch 0 0",
             }}
+            buttonWrapperClasses="cookie-consent-button-wrapper"
             buttonStyle={{
               fontFamily: "inherit",
               color: "#ffffff",
