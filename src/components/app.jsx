@@ -238,7 +238,8 @@ const App = (props) => {
             disableButtonStyles
             declineButtonStyle={{
               fontFamily: "inherit",
-              backgroundColor: "#ffffff",
+              color: "#ffffff",
+              backgroundColor: "#000000",
               border: "1px solid #000000",
               fontSize: "16px",
               padding: "1ch 2ch",
