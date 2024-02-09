@@ -30,12 +30,10 @@ main#main {
     position: relative;
     min-height: 100vh;
     min-height: 100dvh;
-    opacity: 0;
     pointer-events: none;
     padding-top: calc(#{$pad * 4} + 4vmin);
 
     &.active {
-      opacity: 1;
       pointer-events: auto;
 
       .migros-link {
@@ -44,20 +42,25 @@ main#main {
 
       .content {
         opacity: 1;
-        transition: opacity 250ms 125ms;
       }
 
       &.intro {
-        transition: opacity 250ms 125ms;
+        .centerWrap {
+          opacity: 1;
+        }
       }
     }
 
     &.intro {
       padding-top: 0;
+      .centerWrap {
+        opacity: 0;
+      }
     }
 
     .content {
       opacity: 0;
+      transition: opacity 250ms 125ms;
     }
 
     .centerWrap {

@@ -1,6 +1,4 @@
 import React from "react"
-// import ExtraBalls from "./extraballs"
-// import Stream from "./stream"
 import { useScroll } from "react-use"
 import {
   LazyLoadImage,
@@ -8,16 +6,11 @@ import {
 } from "react-lazy-load-image-component"
 import remark from "remark"
 import remarkHypher from "remark-hypher"
-// import hyphenation from "hyphenation.de"
 import Autolinker from "autolinker"
 import ReactPlayer from "react-player"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import InstagramIcon from "@material-ui/icons/Instagram"
 import Classnames from "classnames"
-import {
-  CircularProgressbarWithChildren,
-  buildStyles,
-} from "react-circular-progressbar"
 import "../styles/main.scss"
 
 import alzheimberSrcB from "../assets/alzheimer_b.svg"
@@ -25,12 +18,9 @@ import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
 import shopvilleSrcB from "../assets/shopville_b.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
 import srkB from "../assets/srk_b.svg"
-// import sbbSrcB from "../assets/sbb_b.svg"
 import logoSrcB from "../assets/migros_b.svg"
 import logoSrcW from "../assets/migros_w.svg"
-import scrollDownSrc from "../assets/scroll-down.svg"
-import menuSrc from "../assets/menu.svg"
-import closeSrc from "../assets/close.svg"
+import ScrollIndicator from "./scroll-indicator"
 
 const isSSR = typeof window === "undefined"
 const ClientSideOnlyLazyStream = React.lazy(() => import("./stream"))
@@ -80,7 +70,8 @@ const Main = (props) => {
       props.wp !== 9 &&
         (props.wp < 3 || scrolledPercent > 0.5 || props.isMobile)
     )
-  }, [scrolledPercent])
+    // eslint-disable-next-line
+  }, [scrolledPercent, props.isMobile])
 
   React.useEffect(() => {
     setNewsletterEmailIsValid(validateEmail(newsletterEmail))
@@ -97,7 +88,8 @@ const Main = (props) => {
       props.jumpTo(props.wp, 250)
       setTimeout(() => setAllowScroll(true), 250)
     }
-  }, [props.wp])
+    // eslint-disable-next-line
+  }, [props.wp, props.isMobile])
 
   React.useLayoutEffect(() => {
     if (!articleRef.current.length) return
@@ -120,7 +112,8 @@ const Main = (props) => {
         if (articleWp > 2) setScrolledPercent(pctVisible)
       }
     }
-  }, [scrollPosition])
+    // eslint-disable-next-line
+  }, [scrollPosition, winHeight])
 
   const logo1style =
     props.wp === 1
@@ -197,7 +190,7 @@ const Main = (props) => {
               className: "link",
             })
           ),
-      []
+      [text]
     )
   }
 
@@ -783,56 +776,15 @@ const Main = (props) => {
           </a>
         </div>
       </article>
-      <span
-        className={`scroll-indicator ${
-          props.mobileNavOpen ? "mobile-nav-open blend" : ""
-        } 
-				${props.wp < 3 || !props.isMobile ? "blend" : ""} 
-				${props.wp < 3 && props.isMobile ? "is-scroll" : "is-menu"} 
-				${showScrollIndicator ? "show" : "hide"} wp${props.wp} ${
-          props.inverted ? "inverted" : ""
-        }`}
-        onWheel={props.onExtraWheel}
-        onClick={() => {
-          if (!props.isMobile || (props.isMobile && props.wp < 3))
-            scrollToNextWP()
-          if (props.isMobile && props.wp > 2)
-            props.setMobileNavOpen(!props.mobileNavOpen)
-        }}
-      >
-        <CircularProgressbarWithChildren
-          maxValue={1}
-          strokeWidth={6}
-          value={
-            props.isMobile && props.wp > 2
-              ? 1 - scrolledPercent
-              : scrolledPercent
-          }
-          counterClockwise={props.isMobile && props.wp > 2}
-          styles={buildStyles({
-            strokeLinecap: "butt",
-            pathColor: "#fff",
-            trailColor: "transparent",
-            pathTransition: "none",
-          })}
-        >
-          <img
-            src={scrollDownSrc}
-            className="scroll-indicator-content scroll blend"
-            alt=""
-          />
-          <img
-            src={menuSrc}
-            className="scroll-indicator-content menu blend"
-            alt=""
-          />
-          <img
-            src={closeSrc}
-            className="scroll-indicator-content close blend"
-            alt=""
-          />
-        </CircularProgressbarWithChildren>
-      </span>
+      <ScrollIndicator
+        scrollToNextWP={scrollToNextWP}
+        scrolledPercent={scrolledPercent}
+        isMobile={props.isMobile}
+        mobileNavOpen={props.mobileNavOpen}
+        setMobileNavOpen={props.setMobileNavOpen}
+        showScrollIndicator={showScrollIndicator}
+        wp={props.wp}
+      />
     </main>
   )
 }

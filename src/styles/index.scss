@@ -134,13 +134,9 @@ table {
 
 html,
 body {
-  display: block;
-  height: 100vh;
-  height: 100dvh;
   overflow: hidden;
 
   &.archive-gallery {
-    height: auto;
     overflow: auto;
   }
 }
