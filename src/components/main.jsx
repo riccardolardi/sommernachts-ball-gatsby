@@ -354,6 +354,7 @@ const Main = (props) => {
                                     byline: false,
                                     color: "ffffff",
                                     portrait: false,
+                                    controls: true,
                                   },
                                 },
                                 youtube: {
@@ -531,6 +532,7 @@ const Main = (props) => {
                               byline: false,
                               color: "ffffff",
                               portrait: false,
+                              controls: true,
                             },
                           },
                           youtube: {

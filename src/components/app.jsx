@@ -113,7 +113,7 @@ const App = (props) => {
             </div>
             <div className="row">
               <span className="left suffix-slash">Ball</span>
-              <span className="right">2024</span>
+              <span className="right">2025</span>
             </div>
             <div className="row instagram-link">
               <a
