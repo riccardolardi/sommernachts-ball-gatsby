@@ -105,7 +105,7 @@ const App = (props) => {
           >
             <div className="row">
               <span className="left suffix-slash">Sommer</span>
-              <span className="right">22.</span>
+              <span className="right">21.</span>
             </div>
             <div className="row">
               <span className="left suffix-slash">Nachts</span>
