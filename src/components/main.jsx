@@ -14,7 +14,7 @@ import Classnames from "classnames"
 import "../styles/main.scss"
 
 import alzheimberSrcB from "../assets/alzheimer_b.svg"
-import tanzwerkSrcB from "../assets/tanzwerk_b.svg"
+import tanzwerkSrcB from "../assets/tanzwerk_b.png"
 import shopvilleSrcB from "../assets/shopville_b.svg"
 import radio1SrcB from "../assets/radio1_b.svg"
 import srkB from "../assets/srk_b.svg"
@@ -232,16 +232,16 @@ const Main = (props) => {
         <div className="centerWrap">
           <div className="text-logo" style={props.wp === 2 ? logo2style : null}>
             <div className="row">
-              <span className="left"></span>
-              <span className="right">Unser</span>
+              <span className="left">Diese</span>
+              <span className="right"></span>
             </div>
             <div className="row">
-              <span className="left"></span>
-              <span className="right">Ball</span>
+              <span className="left">Nacht</span>
+              <span className="right"></span>
             </div>
             <div className="row">
-              <span className="left"></span>
-              <span className="right">für alle</span>
+              <span className="left">gehört uns!</span>
+              <span className="right"></span>
             </div>
           </div>
         </div>
@@ -704,7 +704,7 @@ const Main = (props) => {
               </a>
             </p>
             <br />
-            <h3>Partner</h3>
+            <h3>Partner*innen</h3>
             <br />
             <a
               className="partner"

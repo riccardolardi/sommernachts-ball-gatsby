@@ -91,7 +91,10 @@ main#main {
 
       img {
         display: block;
-        height: 3vmax;
+        width: 100%;
+        height: 100%;
+        max-height: 4vmax;
+        max-width: 12vmax;
 
         @include breakpoint($breakMobile) {
           height: 4vmax;
