@@ -2,6 +2,9 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 module.exports = {
+  // flags: {
+  //   DEV_SSR: true,
+  // },
   siteMetadata: {
     title: `Sommernachts-Ball`,
     url: `${process.env.BASE_URL}`,

@@ -379,7 +379,7 @@ const Main = (props) => {
                             <a
                               key={index}
                               dangerouslySetInnerHTML={{
-                                __html: link.link.replace(/(^\w+:|^)\/\//, ""),
+                                __html: link.link?.replace(/(^\w+:|^)\/\//, ""),
                               }}
                               target="_blank"
                               rel="noopener noreferrer"

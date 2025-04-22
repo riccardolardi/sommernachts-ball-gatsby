@@ -63,9 +63,9 @@ const App = (props) => {
   }
 
   const classes = Classnames({
-    inverted: inverted,
+    inverted,
     "mobile-nav-open": mobileNavOpen,
-    isIE: isIE,
+    isIE,
   })
 
   const showFooter = () => {
